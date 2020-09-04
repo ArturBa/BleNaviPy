@@ -9,7 +9,6 @@ python:
 install:
   - echo "Installing"
   - pip install -r requirements-dev.txt
-  - pip install coveralls
 
 jobs:
   allow_failures:
@@ -22,4 +21,4 @@ jobs:
     - stage: "test"
       script:
         - coverage run --omit 'venv/*' -m py.test
-        - coveralls
+        - bash <(curl -s https://codecov.io/bash)
