@@ -1,21 +1,26 @@
-os:
-  - linux
+os: linux
 language: python
+cache: pip
 python:
-  - "3.4"
-  - "3.5"
   - "3.6"
-  - "2.7"
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - echo "Installing"
-  - pip install -r requirements_test.txt
+  - pip install -r requirements-dev.txt
+  - pip install coveralls
 
-script:
-  # - python setup.py nosetests --with-coverage --cover-package easydev
-  - echo "Testing"
-
-after_success:
-  - echo "Coveralls"
-  - coveralls
+jobs:
+allow_failures:
+  env:
+    - CAN_FAIL=true
+include:
+  - stage: "linting"
+    env: CAN_FAIL=true
+    script: black --check .
+  - stage: "test"
+    script:
+      - pytest
+    after_success:
+      - echo "Coveralls"
+      - coveralls
