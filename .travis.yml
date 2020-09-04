@@ -11,14 +11,14 @@ install:
   - pip install coveralls
 
 jobs:
-allow_failures:
-  env:
-    - CAN_FAIL=true
-include:
-  - stage: "linting"
-    env: CAN_FAIL=true
-    script: black --check .
-  - stage: "test"
-    script:
-      - pytest
-      - coveralls
+  allow_failures:
+    env:
+      - CAN_FAIL=true
+  include:
+    - stage: "linting"
+      env: CAN_FAIL=true
+      script: black --check .
+    - stage: "test"
+      script:
+        - pytest
+        - coveralls
