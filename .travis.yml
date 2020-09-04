@@ -21,6 +21,4 @@ include:
   - stage: "test"
     script:
       - pytest
-    after_success:
-      - echo "Coveralls"
       - coveralls
