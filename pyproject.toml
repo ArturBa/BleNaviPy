@@ -7,10 +7,18 @@ exclude = '''
   | \.hg
   | \.mypy_cache
   | \.tox
-  | \.venv
+  | venv
   | _build
   | buck-out
   | build
   | dist
 )/
 '''
+
+[tool.pytest.ini_options]
+python_files = '*_test.py'
+xfail_strict = true
+minversion = "6.0"
+testpaths = [
+    "tests",
+]

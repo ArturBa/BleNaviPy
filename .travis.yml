@@ -21,6 +21,5 @@ jobs:
       script: black --check .
     - stage: "test"
       script:
-        - py.test coveralls/tests.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
-        - echo $COVERALLS_REPO_TOKEN
+        - coverage run --omit 'venv/*' -m py.test
         - coveralls
