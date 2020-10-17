@@ -1,4 +1,9 @@
 class Location:
+    """
+    Location class
+    Contains 2D point location in meters
+    """
+
     def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
