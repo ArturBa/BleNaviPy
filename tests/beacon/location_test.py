@@ -10,9 +10,12 @@ class LocationTest(unittest.TestCase):
         self.assertEqual(self.location.x, 1)
         self.assertEqual(self.location.y, 2)
 
-    def testEquation(self):
+    def testEquability(self):
         location2: Location = Location(1, 2)
         self.assertTrue(self.location, location2)
+
+    def testString(self):
+        self.assertTrue(self.location.__str__(), "Location x: 1\ty: 2")
 
     def testAdd(self):
         location2: Location = Location(2, 1)
