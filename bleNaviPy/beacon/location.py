@@ -1,3 +1,6 @@
+import math
+
+
 class Location:
     """
     Location class
@@ -7,6 +10,12 @@ class Location:
     def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
+
+    def distance(self, l) -> float:
+        x_distance = math.pow(self.x - l.x, 2)
+        y_distance = math.pow(self.y - l.y, 2)
+        distance = math.sqrt(x_distance + y_distance)
+        return distance
 
     def __eq__(self, loc):
         return self.x == loc.x and self.y == loc.y
