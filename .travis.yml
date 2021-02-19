@@ -33,15 +33,11 @@ jobs:
         - cd docs
         - make html
         - make html
-        - ls -lh
-        - ls -lh build
-        - cd build/html
-        - pwd
       deploy:
         provider: pages # deploy on github pages
         project_name: BleNaviPy
         github_token: "$GITHUB_TOKEN"
-        local_dir: docs/build/html
+        local_dir: build/html
         on:
           branch:
             - ci/docs
