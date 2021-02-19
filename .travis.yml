@@ -29,15 +29,13 @@ jobs:
 
     - stage: deploy
       name: "Deploy GH-Docs"
-      branches:
-        only:
-          - ci/docs
       script:
         - cd docs
         - make html
         - make html
       deploy:
-        provider: pages # deploy on github pages
+        provider: pages:git # deploy on github pages
         skip_cleanup: true
+        project_name: BleNaviPy
         github_token: "$GITHUB_TOKEN" # defined via the Travis interface
         local_dir: docs/build/html
