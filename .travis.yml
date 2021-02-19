@@ -34,7 +34,7 @@ jobs:
           - ci/docs
       script:
         - cd docs
-        - pipenv run sphinx-apicod -o source ../bleNaviPy
+        - sphinx-apicod -o source ../bleNaviPy
     - stage: deploy
       name: "Deploy GH-Docs"
       branches:
@@ -42,7 +42,7 @@ jobs:
           - ci/docs
       script:
         - cd docs
-        - pipenv run make html
+        - make html
       deploy:
         provider: pages # deploy on github pages
         skip_cleanup: true
