@@ -4,7 +4,6 @@ language: python
 python:
   - "3.7"
 
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - pip install -r requirements-dev.txt
 
@@ -12,22 +11,21 @@ cache:
   - pip
 
 jobs:
-  allow_failures:
-    env:
-      - CAN_FAIL=true
   include:
-    - stage: "PreCommit"
+    - stage: preCommit
       name: "PreCommit rules check"
-      env: CAN_FAIL=true
       script: pre-commit run --all-files
 
-    - stage: "test"
-      name: "Run tests"
+    - stage: test
+      name: "Run tests and upload the status"
       script:
         - coverage run --omit 'venv/*' -m py.test
         - bash <(curl -s https://codecov.io/bash)
 
     - stage: deploy
+      branches:
+        only:
+          - development
       name: "Deploy GH-Docs"
       script:
         - cd docs
@@ -42,4 +40,4 @@ jobs:
         edge: true
         on:
           branch:
-            - ci/docs
+            - development
