@@ -30,9 +30,14 @@ release = "0.1.0"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinxcontrib.apidoc",
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
 ]
+
+apidoc_module_dir = "../../bleNaviPy"
+apidoc_output_dir = ""
+apidoc_separate_modules = True
 
 napoleon_use_param = False
 napoleon_use_ivar = True
