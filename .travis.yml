@@ -35,6 +35,8 @@ jobs:
         - make html
         - ls -lh
         - ls -lh build
+        - cd build/html
+        - pwd
       deploy:
         provider: pages # deploy on github pages
         project_name: BleNaviPy
