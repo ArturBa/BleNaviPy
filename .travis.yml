@@ -1,7 +1,6 @@
 os: linux
 dist: xenial
 language: python
-cache: pip
 python:
   - "3.7"
 
@@ -9,15 +8,35 @@ python:
 install:
   - pip install -r requirements-dev.txt
 
+cache:
+  - pip
+
 jobs:
   allow_failures:
     env:
       - CAN_FAIL=true
   include:
-    - stage: "linting"
+    - stage: "PreCommit"
+      name: "PreCommit rules check"
       env: CAN_FAIL=true
-      script: black --check .
+      script: pre-commit run --all-files
+
     - stage: "test"
+      name: "Run tests"
       script:
         - coverage run --omit 'venv/*' -m py.test
         - bash <(curl -s https://codecov.io/bash)
+
+    - stage: "docs"
+      name: "Generate GH-Docs"
+      branches:
+        only:
+          - ci/docs
+      script:
+        - sphinx-apicod -o docs/source bleNaviPy
+        - make html -c docs
+      deploy:
+        provider: pages # deploy on github pages
+        skip_cleanup: true
+        github_token: "$GITHUB_TOKEN" # defined via the Travis interface
+        local_dir: docs/build/html

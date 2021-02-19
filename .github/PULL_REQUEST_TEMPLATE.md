@@ -6,7 +6,7 @@
 - [ ] Tests for the changes have been added (for bug fixes / features)
 - [ ] Docs have been added / updated (for bug fixes / features)
 
-## Kind of PR change 
+## Kind of PR change
 <!-- Bug fix, feature, docs update, ... -->
 
 ## Current behavior
@@ -22,4 +22,3 @@
 <!-- Describe what changes might users need to make in their application due to this PR? -->
 
 ## Other information
-  
