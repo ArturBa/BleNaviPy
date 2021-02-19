@@ -16,16 +16,16 @@ jobs:
     env:
       - CAN_FAIL=true
   include:
-    # - stage: "PreCommit"
-    #   name: "PreCommit rules check"
-    #   env: CAN_FAIL=true
-    #   script: pre-commit run --all-files
+    - stage: "PreCommit"
+      name: "PreCommit rules check"
+      env: CAN_FAIL=true
+      script: pre-commit run --all-files
 
-    # - stage: "test"
-    #   name: "Run tests"
-    #   script:
-    #     - coverage run --omit 'venv/*' -m py.test
-    #     - bash <(curl -s https://codecov.io/bash)
+    - stage: "test"
+      name: "Run tests"
+      script:
+        - coverage run --omit 'venv/*' -m py.test
+        - bash <(curl -s https://codecov.io/bash)
 
     - stage: deploy
       name: "Deploy GH-Docs"
