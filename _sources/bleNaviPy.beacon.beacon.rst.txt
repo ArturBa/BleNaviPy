@@ -1,0 +1,7 @@
+bleNaviPy.beacon.beacon module
+==============================
+
+.. automodule:: bleNaviPy.beacon.beacon
+   :members:
+   :undoc-members:
+   :show-inheritance:

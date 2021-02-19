@@ -1,0 +1,19 @@
+bleNaviPy.beacon package
+========================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   bleNaviPy.beacon.beacon
+   bleNaviPy.beacon.location
+
+Module contents
+---------------
+
+.. automodule:: bleNaviPy.beacon
+   :members:
+   :undoc-members:
+   :show-inheritance:
