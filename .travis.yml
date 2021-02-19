@@ -1,23 +1,44 @@
 os: linux
 dist: xenial
 language: python
-cache: pip
 python:
-  - "3.6"
+  - "3.7"
 
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - pip install -r requirements-dev.txt
 
+cache:
+  - pip
+
 jobs:
-  allow_failures:
-    env:
-      - CAN_FAIL=true
   include:
-    - stage: "linting"
-      env: CAN_FAIL=true
-      script: black --check .
-    - stage: "test"
+    - stage: preCommit
+      name: "PreCommit rules check"
+      script: pre-commit run --all-files
+
+    - stage: test
+      name: "Run tests and upload the status"
       script:
         - coverage run --omit 'venv/*' -m py.test
         - bash <(curl -s https://codecov.io/bash)
+
+    - stage: deploy
+      branches:
+        only:
+          - development
+      if: (NOT type IN (pull_request)) AND (branch = development)
+      name: "Deploy GH-Docs"
+      script:
+        - cd docs
+        - make html
+        - make html
+        - cd ..
+      deploy:
+        provider: pages # deploy on github pages
+        project_name: BleNaviPy
+        github_token: "$GITHUB_TOKEN"
+        local_dir: docs/build/html
+        edge: true
+        on:
+          branch:
+            - development
