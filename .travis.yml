@@ -27,16 +27,22 @@ jobs:
     #     - coverage run --omit 'venv/*' -m py.test
     #     - bash <(curl -s https://codecov.io/bash)
 
-    - stage: "docs"
+    - stage: docs
       name: "Generate GH-Docs"
       branches:
         only:
           - ci/docs
       script:
         - cd docs
-        - pip install -U Sphinx
-        - sphinx-apicod -o source ../bleNaviPy
-        - make html
+        - pipenv run sphinx-apicod -o source ../bleNaviPy
+    - stage: deploy
+      name: "Deploy GH-Docs"
+      branches:
+        only:
+          - ci/docs
+      script:
+        - cd docs
+        - pipenv run make html
       deploy:
         provider: pages # deploy on github pages
         skip_cleanup: true
