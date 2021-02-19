@@ -39,6 +39,7 @@ jobs:
         project_name: BleNaviPy
         github_token: "$GITHUB_TOKEN"
         local_dir: docs/build/html
+        edge: true
         on:
           branch:
             - ci/docs
