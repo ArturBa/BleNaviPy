@@ -35,7 +35,9 @@ jobs:
         - make html
       deploy:
         provider: pages:git # deploy on github pages
-        skip_cleanup: true
         project_name: BleNaviPy
         github_token: "$GITHUB_TOKEN" # defined via the Travis interface
         local_dir: docs/build/html
+        on:
+          branch:
+            - ci/docs
