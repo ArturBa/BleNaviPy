@@ -33,7 +33,6 @@ jobs:
         - cd docs
         - make html
         - make html
-        - ls docs/build
       deploy:
         provider: pages # deploy on github pages
         project_name: BleNaviPy
