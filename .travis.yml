@@ -33,9 +33,9 @@ jobs:
         only:
           - ci/docs
       script:
-        - pip install -U Sphinx
-        - sphinx-apicod -o docs/source bleNaviPy
-        - make -c docs html
+        - cd docs
+        - sphinx-apicod -o source ../bleNaviPy
+        - make html
       deploy:
         provider: pages # deploy on github pages
         skip_cleanup: true
