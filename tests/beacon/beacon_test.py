@@ -1,7 +1,7 @@
 import unittest
 
 from bleNaviPy.beacon.beacon import Beacon
-from bleNaviPy.indoorGML.geometry.point import Point
+from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 
 
 class BeaconTest(unittest.TestCase):
