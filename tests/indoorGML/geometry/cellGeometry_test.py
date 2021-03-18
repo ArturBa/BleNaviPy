@@ -15,7 +15,7 @@ class LocationTest(unittest.TestCase):
 
     def testStringify(self):
         self.assertEqual(
-            f"Cell: {self.cellName} Points: [{self.cellPoints[0].x}, {self.cellPoints[0].x}][{self.cellPoints[1].x}, {self.cellPoints[1].x}]",
+            f"Cell: {self.cellName} Points: [{self.cellPoints[0].x}, {self.cellPoints[0].y}][{self.cellPoints[1].x}, {self.cellPoints[1].y}]",
             self.cellGeometry.__str__(),
         )
 

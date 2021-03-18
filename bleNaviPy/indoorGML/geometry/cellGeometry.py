@@ -10,10 +10,8 @@ class CellGeometry:
 
     """
 
-    def __init__(self, name: str, points: list[Point]):
-        print(name)
+    def __init__(self, name: str, points: list[Point]) -> CellGeometry:
         self.name = name
-        print(self.name)
         self.points = points
         self.holes = []
 
