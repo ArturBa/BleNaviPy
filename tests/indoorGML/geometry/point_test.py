@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from bleNaviPy.indoorGML.geometry.point import Point
+from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 
 
 class PointTest(unittest.TestCase):
