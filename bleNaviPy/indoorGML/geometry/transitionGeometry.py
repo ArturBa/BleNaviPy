@@ -19,7 +19,14 @@ class TransitionGeometry:
         return f"Transition: " + s
 
     def getDistance(self, point: Point) -> double:
+        """Get distance of a point to the closest segment of transition
 
+        Args:
+            point (Point): Point to check
+
+        Returns:
+            double: Distance to the segment
+        """
         p3 = np.asarray([point.x, point.y])
         distance = float("inf")
         for i in range(1, len(self.points)):
