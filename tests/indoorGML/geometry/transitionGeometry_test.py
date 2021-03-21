@@ -34,6 +34,11 @@ class LocationTest(unittest.TestCase):
             round(0.3 * 2 ** 0.5, 4), self.transitionGeometry.getDistance(testPoint)
         )
 
+        testPoint = Point(1.3, 0.3)
+        self.assertEqual(
+            round(0.3 * 2 ** 0.5, 6), self.transitionGeometry.getDistance(testPoint, 6)
+        )
+
     def testClosestPoint(self):
         testPoint = Point(0.3, 0.5)
         closesPoint = Point(0, 0.5)

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from bleNaviPy.indoorGML.geometry.cellGeometry import CellGeometry
 from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
 
