@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from typing import List
 
 from bleNaviPy.indoorGML.geometry.cellGeometry import CellGeometry
 from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
@@ -40,7 +39,7 @@ class ParserJSON:
         return cellGeometries
 
     @staticmethod
-    def getCellName(cellId: str, cellProperties: List[any]) -> str:
+    def getCellName(cellId: str, cellProperties: list[any]) -> str:
         for cellProperty in cellProperties:
             if cellProperty["id"] == cellId:
                 return cellProperty["name"]
@@ -48,12 +47,12 @@ class ParserJSON:
 
     @staticmethod
     def getTransitionGeometries(projectData: any) -> list[TransitionGeometry]:
-        transitionGeometries: List[TransitionGeometry] = []
+        transitionGeometries: list[TransitionGeometry] = []
         transitionGeometry = list(
             projectData["geometryContainer"]["transitionGeometry"]
         )
         for transition in transitionGeometry:
-            transitionPoints: List[Point] = []
+            transitionPoints: list[Point] = []
             for points in transition["points"]:
                 x = points["point"]["x"]
                 y = points["point"]["y"]
