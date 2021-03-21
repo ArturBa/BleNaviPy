@@ -19,7 +19,7 @@ jobs:
     - stage: test
       name: "Run tests and upload the status"
       script:
-        - coverage run --omit 'venv/*' -m py.test
+        - coverage run --omit 'venv/*','tests/*' -m py.test
         - bash <(curl -s https://codecov.io/bash)
 
     - stage: deploy
