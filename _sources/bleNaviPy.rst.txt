@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    bleNaviPy.beacon
+   bleNaviPy.indoorGML
    bleNaviPy.utils
 
 Module contents

@@ -1,0 +1,7 @@
+bleNaviPy.indoorGML.geometry.pointGeometry module
+=================================================
+
+.. automodule:: bleNaviPy.indoorGML.geometry.pointGeometry
+   :members:
+   :undoc-members:
+   :show-inheritance:

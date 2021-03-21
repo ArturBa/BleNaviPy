@@ -1,0 +1,7 @@
+bleNaviPy.indoorGML.parserJSON module
+=====================================
+
+.. automodule:: bleNaviPy.indoorGML.parserJSON
+   :members:
+   :undoc-members:
+   :show-inheritance:

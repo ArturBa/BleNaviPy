@@ -1,0 +1,21 @@
+bleNaviPy.indoorGML.geometry package
+====================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   bleNaviPy.indoorGML.geometry.cellGeometry
+   bleNaviPy.indoorGML.geometry.floorGeometry
+   bleNaviPy.indoorGML.geometry.pointGeometry
+   bleNaviPy.indoorGML.geometry.transitionGeometry
+
+Module contents
+---------------
+
+.. automodule:: bleNaviPy.indoorGML.geometry
+   :members:
+   :undoc-members:
+   :show-inheritance:

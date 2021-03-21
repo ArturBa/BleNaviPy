@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bleNaviPy.indoorGML.geometry.transitionGeometry module &#8212; BleNaviPy 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-bleNaviPy.indoorGML.geometry.transitionGeometry">
+<span id="blenavipy-indoorgml-geometry-transitiongeometry-module"></span><h1>bleNaviPy.indoorGML.geometry.transitionGeometry module<a class="headerlink" href="#module-bleNaviPy.indoorGML.geometry.transitionGeometry" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.geometry.transitionGeometry.</span></code><code class="sig-name descname"><span class="pre">TransitionGeometry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Point</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class transition
+Contains information about paths</p>
+<dl class="py method">
+<dt id="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry.getDistance">
+<code class="sig-name descname"><span class="pre">getDistance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">precistion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry.getDistance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get distance of a point to the closest segment of transition</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<em>Point</em>) – Point to check</p></li>
+<li><p><strong>precistion</strong> (<em>int, optional</em>) – [Return value precistion]. Defaults to 4.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Distance to the segment rounded to (precision) decimal places</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry.getTheClosestPoint">
+<code class="sig-name descname"><span class="pre">getTheClosestPoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry.getTheClosestPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the closest point on any segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>point</strong> (<em>Point</em>) – [description]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[description]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point">Point</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BleNaviPy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">BleNaviPy</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Artur Bauer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/bleNaviPy.indoorGML.geometry.transitionGeometry.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

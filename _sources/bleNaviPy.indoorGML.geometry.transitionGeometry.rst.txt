@@ -1,0 +1,7 @@
+bleNaviPy.indoorGML.geometry.transitionGeometry module
+======================================================
+
+.. automodule:: bleNaviPy.indoorGML.geometry.transitionGeometry
+   :members:
+   :undoc-members:
+   :show-inheritance:

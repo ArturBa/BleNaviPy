@@ -1,0 +1,7 @@
+bleNaviPy.indoorGML.geometry.floorGeometry module
+=================================================
+
+.. automodule:: bleNaviPy.indoorGML.geometry.floorGeometry
+   :members:
+   :undoc-members:
+   :show-inheritance:

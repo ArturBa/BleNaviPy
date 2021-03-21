@@ -1,0 +1,26 @@
+bleNaviPy.indoorGML package
+===========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   bleNaviPy.indoorGML.geometry
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   bleNaviPy.indoorGML.parserJSON
+
+Module contents
+---------------
+
+.. automodule:: bleNaviPy.indoorGML
+   :members:
+   :undoc-members:
+   :show-inheritance:

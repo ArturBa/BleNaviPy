@@ -1,0 +1,7 @@
+bleNaviPy.indoorGML.geometry.cellGeometry module
+================================================
+
+.. automodule:: bleNaviPy.indoorGML.geometry.cellGeometry
+   :members:
+   :undoc-members:
+   :show-inheritance:
