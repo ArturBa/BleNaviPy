@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import math
 
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
