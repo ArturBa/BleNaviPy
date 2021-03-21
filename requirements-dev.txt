@@ -6,3 +6,4 @@ coverage>=2.10.1
 pre-commit>=2.7.1
 Sphinx>=3.5.1
 sphinxcontrib-apidoc>=0.3.0
+Pygments>=2.8.0

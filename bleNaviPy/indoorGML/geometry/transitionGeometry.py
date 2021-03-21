@@ -18,7 +18,7 @@ class TransitionGeometry:
             s += f"[{point.x}, {point.y}]"
         return f"Transition: " + s
 
-    def getDistance(self, point: Point, precistion: int = 4) -> double:
+    def getDistance(self, point: Point, precistion: int = 4) -> float:
         """Get distance of a point to the closest segment of transition
 
         Args:
@@ -26,7 +26,7 @@ class TransitionGeometry:
             precistion (int, optional): [Return value precistion]. Defaults to 4.
 
         Returns:
-            double: Distance to the segment rounded to (precision) decimal places
+            float: Distance to the segment rounded to (precision) decimal places
         """
         distance = float("inf")
         for i in range(1, len(self.points)):
@@ -35,7 +35,7 @@ class TransitionGeometry:
                 distance = d
         return round(distance, precistion)
 
-    def __getSegmentDistance(self, point: Point, segment: list[Point]) -> double:
+    def __getSegmentDistance(self, point: Point, segment: list[Point]) -> float:
         point0 = segment[0]
         point1 = segment[1]
 
@@ -68,4 +68,12 @@ class TransitionGeometry:
         return math.sqrt(dx * dx + dy * dy)
 
     def getTheClosestPoint(self, point: Point) -> Point:
+        """Get the closest point on any segment
+
+        Args:
+            point (Point): [description]
+
+        Returns:
+            Point: [description]
+        """
         return Point(0, 0.5)

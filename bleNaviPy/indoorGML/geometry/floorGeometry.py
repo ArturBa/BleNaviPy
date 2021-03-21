@@ -14,3 +14,6 @@ class FloorGeometry:
         self.transitions: list[TransitionGeometry] = transitions
         self.beacons: list[Beacon] = []
         self.users: list[Point] = []
+
+    def __str__(self):
+        return f"Floor. Cells: {len(self.cells)}"
