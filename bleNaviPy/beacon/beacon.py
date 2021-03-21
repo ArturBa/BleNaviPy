@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 import math
 
-from bleNaviPy.beacon.location import Location
+from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 
 
 beaconType = {
@@ -11,12 +13,20 @@ beaconType = {
 
 
 class Beacon:
-    def __init__(self, location: Location):
+    def __init__(self, location: Point) -> Beacon:
+        """Constructor
+
+        Args:
+            location (Point): Location of the beacon
+
+        Returns:
+            Beacon:
+        """
         self.location = location
         self.RSSI_0 = -80  # beacon RSSI
         self.N = 2  # beacon strength
 
-    def getRSSI(self, location: Location) -> float:
+    def getRSSI(self, location: Point) -> float:
         """Calculate RSSI on given location
 
         Args:

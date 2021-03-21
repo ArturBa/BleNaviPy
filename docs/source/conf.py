@@ -33,6 +33,7 @@ extensions = [
     "sphinxcontrib.apidoc",
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
+    "sphinx.ext.intersphinx",
     "sphinx.ext.githubpages",
 ]
 
@@ -42,6 +43,10 @@ apidoc_separate_modules = True
 
 napoleon_use_param = False
 napoleon_use_ivar = True
+
+intersphinx_mapping = {
+    "py": ("https://docs.python.org/3", None),
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
