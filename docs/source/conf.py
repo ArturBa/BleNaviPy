@@ -33,6 +33,7 @@ extensions = [
     "sphinxcontrib.apidoc",
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
+    "sphinx.ext.githubpages",
 ]
 
 apidoc_module_dir = "../../bleNaviPy"
