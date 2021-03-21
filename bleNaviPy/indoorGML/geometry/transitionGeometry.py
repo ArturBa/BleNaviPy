@@ -9,7 +9,20 @@ from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 
 
 class TransitionGeometry:
+    """
+    Class transition
+    Contains information about paths
+    """
+
     def __init__(self, points: list[Point]) -> TransitionGeometry:
+        """Constructor
+
+        Args:
+            points (list[Point]): Path to move by points
+
+        Returns:
+            TransitionGeometry:
+        """
         self.points = points
 
     def __str__(self) -> str:

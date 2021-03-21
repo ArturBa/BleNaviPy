@@ -10,6 +10,10 @@ from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
 
 
 class ParserJSON:
+    """
+    Class to parse a JSON file with indoorGML info
+    """
+
     @staticmethod
     def getGeometryFromFile(filename: str) -> FloorGeometry:
         """Get floor geometry from json file

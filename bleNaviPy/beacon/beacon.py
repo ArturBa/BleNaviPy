@@ -11,7 +11,15 @@ beaconType = {
 
 
 class Beacon:
-    def __init__(self, location: Point):
+    def __init__(self, location: Point) -> Beacon:
+        """Constructor
+
+        Args:
+            location (Point): Location of the beacon
+
+        Returns:
+            Beacon:
+        """
         self.location = location
         self.RSSI_0 = -80  # beacon RSSI
         self.N = 2  # beacon strength

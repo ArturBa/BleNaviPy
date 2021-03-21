@@ -11,6 +11,15 @@ class CellGeometry:
     """
 
     def __init__(self, name: str, points: list[Point]) -> CellGeometry:
+        """Constructor
+
+        Args:
+            name (str): Cell name
+            points (list[Point]): Cell boundaries
+
+        Returns:
+            CellGeometry: Cell Geometry
+        """
         self.name: str = name
         self.points: list[Point] = points
         self.holes = []
