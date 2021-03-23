@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+from typing import List
 
 from bleNaviPy.indoorGML.geometry.cellGeometry import CellGeometry
 from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
@@ -39,91 +40,91 @@ class ParserJSON:
         """
         try:
             open(filename, "r")
-            jsonData = json.load(open(filename, "r"))
-            projectData = ParserJSON.getProjectData(jsonData)
+            json_data = json.load(open(filename, "r"))
+            project_data = ParserJSON.getProjectData(json_data)
             return FloorGeometry(
-                ParserJSON.getCellGeometries(projectData),
-                ParserJSON.getTransitionGeometries(projectData),
+                ParserJSON.getCellGeometries(project_data),
+                ParserJSON.getTransitionGeometries(project_data),
             )
         except IOError:
             logging.error(f"File {filename} open error. Please check the path")
             return FloorGeometry([], [])
 
     @staticmethod
-    def getProjectData(jsonData: any) -> any:
+    def getProjectData(json_data: any) -> any:
         """get first project data
 
         Args:
-            jsonData (any): Json data read from the file
+            json_data (any): Json data read from the file
 
         Returns:
             any: project json data
         """
-        projectId = list(jsonData.keys())[0]
-        return jsonData[projectId]
+        project_id = list(json_data.keys())[0]
+        return json_data[project_id]
 
     @staticmethod
-    def getCellGeometries(projectData: any) -> list[CellGeometry]:
+    def getCellGeometries(project_data: any) -> List[CellGeometry]:
         """Get Cell geometries from a project data
 
         Args:
-            projectData (any): Project json data
+            project_data (any): Project json data
 
         Returns:
             list[CellGeometry]: List of cells from project file
         """
-        cellGeometries: List[CellGeometry] = []
-        cellGeometry = list(
-            projectData[ParserJSON.geometryContainer][ParserJSON.cellGeometry]
+        cell_geometries: List[CellGeometry] = []
+        cell_geometry = list(
+            project_data[ParserJSON.geometryContainer][ParserJSON.cellGeometry]
         )
-        cellProperties = list(
-            projectData[ParserJSON.propertyContainer][ParserJSON.cellProperties]
+        cell_properties = list(
+            project_data[ParserJSON.propertyContainer][ParserJSON.cellProperties]
         )
-        for cell in cellGeometry:
-            cellPoints: List[Point] = []
-            cellName: string = ParserJSON.getCellName(cell["id"], cellProperties)
+        for cell in cell_geometry:
+            cell_points: List[Point] = []
+            cell_name: str = ParserJSON.getCellName(cell["id"], cell_properties)
             for points in cell["points"]:
                 x = points["point"]["x"]
                 y = points["point"]["y"]
-                cellPoints.append(Point(x, y))
-            cellGeometries.append(CellGeometry(cellName, cellPoints))
-        return cellGeometries
+                cell_points.append(Point(x, y))
+            cell_geometries.append(CellGeometry(cell_name, cell_points))
+        return cell_geometries
 
     @staticmethod
-    def getCellName(cellId: str, cellProperties: list[any]) -> str:
+    def getCellName(cell_id: str, cell_properties: List[any]) -> str:
         """Get cell name by cellId
 
         Args:
-            cellId (str): Cell id
-            cellProperties (list[any]): List of all cell properties
+            cell_id (str): Cell id
+            cell_properties (list[any]): List of all cell properties
 
         Returns:
             str: Cell name
         """
-        for cellProperty in cellProperties:
-            if cellProperty["id"] == cellId:
+        for cellProperty in cell_properties:
+            if cellProperty["id"] == cell_id:
                 return cellProperty["name"]
-        return cellId
+        return cell_id
 
     @staticmethod
-    def getTransitionGeometries(projectData: any) -> list[TransitionGeometry]:
+    def getTransitionGeometries(project_data: any) -> List[TransitionGeometry]:
         """Get transitions from a project file
 
         Args:
-            projectData (any): Project json data
+            project_data (any): Project json data
 
         Returns:
             list[TransitionGeometry]: List of transitions geometries from the project file
         """
-        transitionGeometries: list[TransitionGeometry] = []
-        transitionGeometry = list(
-            projectData[ParserJSON.geometryContainer][ParserJSON.transitionGeometry]
+        transition_geometries: List[TransitionGeometry] = []
+        transition_geometry = list(
+            project_data[ParserJSON.geometryContainer][ParserJSON.transitionGeometry]
         )
-        for transition in transitionGeometry:
-            transitionPoints: list[Point] = []
+        for transition in transition_geometry:
+            transition_points: List[Point] = []
             for points in transition["points"]:
                 x = points["point"]["x"]
                 y = points["point"]["y"]
-                transitionPoints.append(Point(x, y))
-            transitionGeometries.append(TransitionGeometry(transitionPoints))
-        return transitionGeometries
+                transition_points.append(Point(x, y))
+            transition_geometries.append(TransitionGeometry(transition_points))
+        return transition_geometries

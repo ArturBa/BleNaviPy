@@ -1,4 +1,3 @@
-import json
 import unittest
 
 from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
@@ -66,20 +65,20 @@ class LocationTest(unittest.TestCase):
         self.assertEqual(value["test"], ParserJSON.getProjectData(value))
 
     def testCellGeometries(self):
-        lCellGeom = ParserJSON.getCellGeometries(self.projectData)
-        self.assertEqual(2, len(lCellGeom))
+        l_cell_geom = ParserJSON.getCellGeometries(self.projectData)
+        self.assertEqual(2, len(l_cell_geom))
 
     def testCellName(self):
-        cellProperties = self.projectData[ParserJSON.propertyContainer][
+        cell_properties = self.projectData[ParserJSON.propertyContainer][
             ParserJSON.cellProperties
         ]
-        self.assertEqual("name001", ParserJSON.getCellName("001", cellProperties))
+        self.assertEqual("name001", ParserJSON.getCellName("001", cell_properties))
 
-        self.assertEqual("002", ParserJSON.getCellName("002", cellProperties))
+        self.assertEqual("002", ParserJSON.getCellName("002", cell_properties))
 
     def testTransitionGeometries(self):
-        lTransitionGeom = ParserJSON.getTransitionGeometries(self.projectData)
-        self.assertEqual(2, len(lTransitionGeom))
+        l_transition_geom = ParserJSON.getTransitionGeometries(self.projectData)
+        self.assertEqual(2, len(l_transition_geom))
 
 
 if __name__ == "__main__":

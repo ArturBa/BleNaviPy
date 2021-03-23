@@ -13,7 +13,7 @@ beaconType = {
 
 
 class Beacon:
-    def __init__(self, location: Point) -> Beacon:
+    def __init__(self, location: Point) -> None:
         """Constructor
 
         Args:

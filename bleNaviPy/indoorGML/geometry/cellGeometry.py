@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import List
+
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 
 
@@ -10,18 +12,18 @@ class CellGeometry:
 
     """
 
-    def __init__(self, name: str, points: list[Point]) -> CellGeometry:
+    def __init__(self, name: str, points: List[Point]) -> None:
         """Constructor
 
         Args:
             name (str): Cell name
-            points (list[Point]): Cell boundaries
+            points (List[Point]): Cell boundaries
 
         Returns:
             CellGeometry: Cell Geometry
         """
         self.name: str = name
-        self.points: list[Point] = points
+        self.points: List[Point] = points
         self.holes = []
 
     def __str__(self) -> str:
