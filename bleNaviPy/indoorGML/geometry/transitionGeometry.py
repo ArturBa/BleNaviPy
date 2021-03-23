@@ -32,11 +32,11 @@ class TransitionGeometry:
         return f"Transition: " + s
 
     @property
-    def segments(self) -> list[Point, Point]:
+    def segments(self) -> list[[Point, Point]]:
         """Get line segments of transition
 
         Returns:
-            list[Point, Point]: Line segments
+            list[[Point, Point]]: Line segments
         """
         return [
             [self.points[i - 1], self.points[i]] for i in range(1, len(self.points))
@@ -52,18 +52,18 @@ class TransitionGeometry:
         Returns:
             float: Distance to the segment rounded to (precision) decimal places
         """
-        closest_point: Point = self.getClosestPoint(point)
-        distance: float = point.distance(closest_point)
+        closestPoint: Point = self.getClosestPoint(point)
+        distance: float = point.distance(closestPoint)
         return round(distance, precistion)
 
     def _getClosestPointOnSegment(
-        self, point: Point, segment: list[Point, Point]
+        self, point: Point, segment: list[[Point, Point]]
     ) -> Point:
         """Get point closest on segment
 
         Args:
             point (Point):
-            segment (list[Point, Point]): Transition segment
+            segment (list[[Point, Point]]): Transition segment
 
         Returns:
             Point: Point on segment
@@ -77,10 +77,10 @@ class TransitionGeometry:
         D = point1.y - point0.y
 
         dot = A * C + B * D
-        len_sq = C * C + D * D
+        lenSq = C * C + D * D
         param = -1
-        if len_sq != 0:  # in case of 0 length line
-            param = dot / len_sq
+        if lenSq != 0:  # in case of 0 length line
+            param = dot / lenSq
 
         xx = 0
         yy = 0
@@ -127,8 +127,8 @@ class TransitionGeometry:
             Point: Closest Point
         """
 
-        closest_segment: int = self._getClosestSegmentId(point)
-        closest_point: Point = self._getClosestPointOnSegment(
-            point, self.segments[closest_segment]
+        closestSegment: int = self._getClosestSegmentId(point)
+        closestPoint: Point = self._getClosestPointOnSegment(
+            point, self.segments[closestSegment]
         )
-        return closest_point
+        return closestPoint
