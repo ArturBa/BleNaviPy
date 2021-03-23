@@ -34,7 +34,7 @@
 <span id="blenavipy-indoorgml-geometry-transitiongeometry-module"></span><h1>bleNaviPy.indoorGML.geometry.transitionGeometry module<a class="headerlink" href="#module-bleNaviPy.indoorGML.geometry.transitionGeometry" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.geometry.transitionGeometry.</span></code><code class="sig-name descname"><span class="pre">TransitionGeometry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Point</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.geometry.transitionGeometry.</span></code><code class="sig-name descname"><span class="pre">TransitionGeometry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class transition
 Contains information about paths</p>
@@ -57,13 +57,13 @@ Contains information about paths</p>
 
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry.getDistance">
-<code class="sig-name descname"><span class="pre">getDistance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">precistion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry.getDistance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">getDistance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry.getDistance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get distance of a point to the closest segment of transition</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>point</strong> (<em>Point</em>) – Point to check</p></li>
-<li><p><strong>precistion</strong> (<em>int, optional</em>) – [Return value precistion]. Defaults to 4.</p></li>
+<li><p><strong>precision</strong> (<em>int, optional</em>) – [Return value precision]. Defaults to 4.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -84,11 +84,31 @@ Contains information about paths</p>
 <dd class="field-odd"><p>Line segments</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a>[[<a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point">Point</a>, <a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point">Point</a>]]</p>
+<dd class="field-even"><p>List[List[<a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point">Point</a>]]</p>
 </dd>
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt id="bleNaviPy.indoorGML.geometry.transitionGeometry.getClosestPointOnSegment">
+<code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.geometry.transitionGeometry.</span></code><code class="sig-name descname"><span class="pre">getClosestPointOnSegment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.transitionGeometry.getClosestPointOnSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get point closest on segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<em>Point</em>)</p></li>
+<li><p><strong>segment</strong> (<em>List[List[Point]]</em>) – Transition segment</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Point on segment</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point">Point</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

@@ -37,47 +37,32 @@
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.parserJSON.</span></code><code class="sig-name descname"><span class="pre">ParserJSON</span></code><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to parse a JSON file with indoorGML info</p>
-<dl class="py attribute">
-<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.cellGeometry">
-<code class="sig-name descname"><span class="pre">cellGeometry</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'cellGeometry'</span></em><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.cellGeometry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.cellProperties">
-<code class="sig-name descname"><span class="pre">cellProperties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'cellProperties'</span></em><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.cellProperties" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.geometryContainer">
-<code class="sig-name descname"><span class="pre">geometryContainer</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'geometryContainer'</span></em><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.geometryContainer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getCellGeometries">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getCellGeometries</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectData</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">CellGeometry</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getCellGeometries" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getCellGeometries</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.cellGeometry.html#bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry" title="bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getCellGeometries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get Cell geometries from a project data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>projectData</strong> (<em>any</em>) – Project json data</p>
+<dd class="field-odd"><p><strong>project_data</strong> (<em>any</em>) – Project json data</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>List of cells from project file</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a>[<a class="reference internal" href="bleNaviPy.indoorGML.geometry.cellGeometry.html#bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry" title="bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry">CellGeometry</a>]</p>
+<dd class="field-odd"><p>List[<a class="reference internal" href="bleNaviPy.indoorGML.geometry.cellGeometry.html#bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry" title="bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry">CellGeometry</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getCellName">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getCellName</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cellId</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cellProperties</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getCellName" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getCellName</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cell_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_properties</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getCellName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get cell name by cellId</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cellId</strong> (<em>str</em>) – Cell id</p></li>
-<li><p><strong>cellProperties</strong> (<em>list[any]</em>) – List of all cell properties</p></li>
+<li><p><strong>cell_id</strong> (<em>str</em>) – Cell id</p></li>
+<li><p><strong>cell_properties</strong> (<em>List[any]</em>) – List of all cell properties</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -115,11 +100,11 @@
 
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getProjectData">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getProjectData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jsonData</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">any</span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getProjectData" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getProjectData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">any</span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getProjectData" title="Permalink to this definition">¶</a></dt>
 <dd><p>get first project data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>jsonData</strong> (<em>any</em>) – Json data read from the file</p>
+<dd class="field-odd"><p><strong>json_data</strong> (<em>any</em>) – Json data read from the file</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>project json data</p>
@@ -132,30 +117,20 @@
 
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getTransitionGeometries">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getTransitionGeometries</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectData</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">TransitionGeometry</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getTransitionGeometries" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getTransitionGeometries</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.transitionGeometry.html#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry" title="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getTransitionGeometries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get transitions from a project file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>projectData</strong> (<em>any</em>) – Project json data</p>
+<dd class="field-odd"><p><strong>project_data</strong> (<em>any</em>) – Project json data</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>List of transitions geometries from the project file</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)">list</a>[<a class="reference internal" href="bleNaviPy.indoorGML.geometry.transitionGeometry.html#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry" title="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry">TransitionGeometry</a>]</p>
+<dd class="field-odd"><p>List[<a class="reference internal" href="bleNaviPy.indoorGML.geometry.transitionGeometry.html#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry" title="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry">TransitionGeometry</a>]</p>
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py attribute">
-<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.propertyContainer">
-<code class="sig-name descname"><span class="pre">propertyContainer</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'propertyContainer'</span></em><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.propertyContainer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.transitionGeometry">
-<code class="sig-name descname"><span class="pre">transitionGeometry</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'transitionGeometry'</span></em><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.transitionGeometry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
