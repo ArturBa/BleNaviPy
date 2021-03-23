@@ -84,12 +84,10 @@ class FloorGeometry:
         distance = float("inf")
         p = point
         for transition in self.transitions:
-            print(f"trans: {transition}")
             d = transition.getDistance(point)
             if d < distance:
                 distance = d
                 p = transition.getClosestPoint(point)
-        print(self.transitions)
 
         if distance == float("inf"):
             logging.error(
