@@ -1,4 +1,7 @@
+import logging
 import unittest
+
+import pytest
 
 from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
 from bleNaviPy.indoorGML.parserJSON import ParserJSON
@@ -50,15 +53,23 @@ class LocationTest(unittest.TestCase):
         "propertyContainer": {"cellProperties": [{"id": "001", "name": "name001"}]},
     }
 
+    @pytest.fixture(autouse=True)
+    def inject_fixtures(self, caplog):
+        self._caplog = caplog
+
     def testGetGeometryFromFile(self):
         floor: FloorGeometry = ParserJSON.getGeometryFromFile(self.filename)
         self.assertEqual(5, len(floor.cells))
 
     def testGetGeometryFromFileFailure(self):
-        floor: FloorGeometry = ParserJSON.getGeometryFromFile(
-            "tests/indoorGML/nonExisting.json"
-        )
-        self.assertEqual(0, len(floor.cells))
+        fake_path: str = "tests/indoorGML/nonExisting.json"
+        with self._caplog.at_level(logging.INFO):
+            floor: FloorGeometry = ParserJSON.getGeometryFromFile(fake_path)
+            assert (
+                f"File {fake_path} open error. Please check the path"
+                in self._caplog.text
+            )
+            self.assertEqual(0, len(floor.cells))
 
     def testGetProjectData(self):
         value = {"test": {"1": 1}}

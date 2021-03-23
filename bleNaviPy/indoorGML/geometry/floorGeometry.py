@@ -82,13 +82,16 @@ class FloorGeometry:
 
     def _getPointOnClosestTransition(self, point: Point) -> Point:
         distance = float("inf")
-        p = Point(0, 0)
+        p = point
         for transition in self.transitions:
+            print(f"trans: {transition}")
             d = transition.getDistance(point)
             if d < distance:
                 distance = d
                 p = transition.getClosestPoint(point)
-        if distance is float("inf"):
+        print(self.transitions)
+
+        if distance == float("inf"):
             logging.error(
                 f"Cannot adopt {point} to any known transition. Please check configuration"
             )
