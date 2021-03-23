@@ -31,6 +31,17 @@ class TransitionGeometry:
             s += f"[{point.x}, {point.y}]"
         return f"Transition: " + s
 
+    @property
+    def segments(self) -> list[[Point, Point]]:
+        """Get line segments of transition
+
+        Returns:
+            list[[Point, Point]]: Line segments
+        """
+        return [
+            [self.points[i - 1], self.points[i]] for i in range(1, len(self.points))
+        ]
+
     def getDistance(self, point: Point, precistion: int = 4) -> float:
         """Get distance of a point to the closest segment of transition
 
@@ -41,14 +52,22 @@ class TransitionGeometry:
         Returns:
             float: Distance to the segment rounded to (precision) decimal places
         """
-        distance = float("inf")
-        for i in range(1, len(self.points)):
-            d = self.__getSegmentDistance(point, [self.points[i - 1], self.points[i]])
-            if d < distance:
-                distance = d
+        closestPoint: Point = self.getClosestPoint(point)
+        distance: float = point.distance(closestPoint)
         return round(distance, precistion)
 
-    def __getSegmentDistance(self, point: Point, segment: list[Point]) -> float:
+    def _getClosestPointOnSegment(
+        self, point: Point, segment: list[[Point, Point]]
+    ) -> Point:
+        """Get point closest on segment
+
+        Args:
+            point (Point):
+            segment (list[[Point, Point]]): Transition segment
+
+        Returns:
+            Point: Point on segment
+        """
         point0 = segment[0]
         point1 = segment[1]
 
@@ -58,10 +77,10 @@ class TransitionGeometry:
         D = point1.y - point0.y
 
         dot = A * C + B * D
-        len_sq = C * C + D * D
+        lenSq = C * C + D * D
         param = -1
-        if len_sq != 0:  # in case of 0 length line
-            param = dot / len_sq
+        if lenSq != 0:  # in case of 0 length line
+            param = dot / lenSq
 
         xx = 0
         yy = 0
@@ -76,17 +95,40 @@ class TransitionGeometry:
             xx = point0.x + param * C
             yy = point0.y + param * D
 
-        dx = point.x - xx
-        dy = point.y - yy
-        return math.sqrt(dx * dx + dy * dy)
+        return Point(xx, yy)
 
-    def getTheClosestPoint(self, point: Point) -> Point:
+    def _getClosestSegmentId(self, point: Point) -> int:
+        """Get id of the closes segment to point
+
+        Args:
+            point (Point):
+
+        Returns:
+            int: Id of closest segment
+        """
+        segmentId = 0
+        distance: float = float("inf")
+        for i in range(len(self.segments)):
+            d: float = point.distance(
+                self._getClosestPointOnSegment(point, self.segments[i])
+            )
+            if d < distance:
+                distance = d
+                segmentId = i
+        return segmentId
+
+    def getClosestPoint(self, point: Point) -> Point:
         """Get the closest point on any segment
 
         Args:
-            point (Point): [description]
+            point (Point): Test point
 
         Returns:
-            Point: [description]
+            Point: Closest Point
         """
-        return Point(0, 0.5)
+
+        closestSegment: int = self._getClosestSegmentId(point)
+        closestPoint: Point = self._getClosestPointOnSegment(
+            point, self.segments[closestSegment]
+        )
+        return closestPoint

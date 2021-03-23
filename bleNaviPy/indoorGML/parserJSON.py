@@ -14,6 +14,12 @@ class ParserJSON:
     Class to parse a JSON file with indoorGML info
     """
 
+    geometryContainer = "geometryContainer"
+    cellGeometry = "cellGeometry"
+    transitionGeometry = "transitionGeometry"
+    propertyContainer = "propertyContainer"
+    cellProperties = "cellProperties"
+
     @staticmethod
     def getGeometryFromFile(filename: str) -> FloorGeometry:
         """Get floor geometry from json file
@@ -67,8 +73,12 @@ class ParserJSON:
             list[CellGeometry]: List of cells from project file
         """
         cellGeometries: List[CellGeometry] = []
-        cellGeometry = list(projectData["geometryContainer"]["cellGeometry"])
-        cellProperties = list(projectData["propertyContainer"]["cellProperties"])
+        cellGeometry = list(
+            projectData[ParserJSON.geometryContainer][ParserJSON.cellGeometry]
+        )
+        cellProperties = list(
+            projectData[ParserJSON.propertyContainer][ParserJSON.cellProperties]
+        )
         for cell in cellGeometry:
             cellPoints: List[Point] = []
             cellName: string = ParserJSON.getCellName(cell["id"], cellProperties)
@@ -107,7 +117,7 @@ class ParserJSON:
         """
         transitionGeometries: list[TransitionGeometry] = []
         transitionGeometry = list(
-            projectData["geometryContainer"]["transitionGeometry"]
+            projectData[ParserJSON.geometryContainer][ParserJSON.transitionGeometry]
         )
         for transition in transitionGeometry:
             transitionPoints: list[Point] = []
