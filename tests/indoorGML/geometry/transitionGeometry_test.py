@@ -19,6 +19,13 @@ class LocationTest(unittest.TestCase):
             transitionGeometry.__str__(),
         )
 
+    def testSegments(self):
+        segments = []
+        for i in range(1, len(self.transitionPoints)):
+            segments.append([self.transitionPoints[i - 1], self.transitionPoints[i]])
+
+        self.assertEqual(segments, self.transitionGeometry.segments)
+
     def testDistance(self):
         testPoint = Point(0.3, 0.3)
         self.assertEqual(0.3, self.transitionGeometry.getDistance(testPoint))
@@ -39,11 +46,31 @@ class LocationTest(unittest.TestCase):
             round(0.3 * 2 ** 0.5, 6), self.transitionGeometry.getDistance(testPoint, 6)
         )
 
+    def testClosestSegment(self):
+        self.assertEqual(0, self.transitionGeometry._getClosestSegmentId(Point(-1, 0)))
+
+    def testClosestPointOnSegment(self):
+        segment = [Point(0, 0), Point(1, 0)]
+
+        self.assertEqual(
+            segment[0],
+            self.transitionGeometry._getClosestPointOnSegment(Point(-1, 0), segment),
+        )
+        self.assertEqual(
+            segment[1],
+            self.transitionGeometry._getClosestPointOnSegment(Point(2, 0), segment),
+        )
+        self.assertEqual(
+            Point(0.5, 0),
+            self.transitionGeometry._getClosestPointOnSegment(Point(0.5, 2), segment),
+        )
+
     def testClosestPoint(self):
         testPoint = Point(0.3, 0.5)
-        closesPoint = Point(0, 0.5)
+        closesPoint = Point(0.3, 0)
+
         self.assertEqual(
-            closesPoint, self.transitionGeometry.getTheClosestPoint(testPoint)
+            closesPoint, self.transitionGeometry.getClosestPoint(testPoint)
         )
 
 
