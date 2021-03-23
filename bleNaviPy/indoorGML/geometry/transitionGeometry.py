@@ -5,7 +5,7 @@ from typing import List
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 
 
-def _getClosestPointOnSegment(point: Point, segment: List[Point]) -> Point:
+def getClosestPointOnSegment(point: Point, segment: List[Point]) -> Point:
     """Get point closest on segment
 
     Args:
@@ -102,9 +102,7 @@ class TransitionGeometry:
         segment_id = 0
         distance: float = float("inf")
         for i in range(len(self.segments)):
-            d: float = point.distance(
-                _getClosestPointOnSegment(point, self.segments[i])
-            )
+            d: float = point.distance(getClosestPointOnSegment(point, self.segments[i]))
             if d < distance:
                 distance = d
                 segment_id = i
@@ -121,7 +119,7 @@ class TransitionGeometry:
         """
 
         closest_segment: int = self._getClosestSegmentId(point)
-        closest_point: Point = _getClosestPointOnSegment(
+        closest_point: Point = getClosestPointOnSegment(
             point, self.segments[closest_segment]
         )
         return closest_point

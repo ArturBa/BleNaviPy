@@ -1,7 +1,7 @@
 import unittest
 
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
-from bleNaviPy.indoorGML.geometry.transitionGeometry import _getClosestPointOnSegment
+from bleNaviPy.indoorGML.geometry.transitionGeometry import getClosestPointOnSegment
 from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
 
 
@@ -56,15 +56,15 @@ class LocationTest(unittest.TestCase):
 
         self.assertEqual(
             segment[0],
-            _getClosestPointOnSegment(Point(-1, 0), segment),
+            getClosestPointOnSegment(Point(-1, 0), segment),
         )
         self.assertEqual(
             segment[1],
-            _getClosestPointOnSegment(Point(2, 0), segment),
+            getClosestPointOnSegment(Point(2, 0), segment),
         )
         self.assertEqual(
             Point(0.5, 0),
-            _getClosestPointOnSegment(Point(0.5, 2), segment),
+            getClosestPointOnSegment(Point(0.5, 2), segment),
         )
 
     def testClosestPoint(self):
