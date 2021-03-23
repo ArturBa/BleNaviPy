@@ -71,7 +71,7 @@ class ParserJSON:
             project_data (any): Project json data
 
         Returns:
-            list[CellGeometry]: List of cells from project file
+            List[CellGeometry]: List of cells from project file
         """
         cell_geometries: List[CellGeometry] = []
         cell_geometry = list(
@@ -96,7 +96,7 @@ class ParserJSON:
 
         Args:
             cell_id (str): Cell id
-            cell_properties (list[any]): List of all cell properties
+            cell_properties (List[any]): List of all cell properties
 
         Returns:
             str: Cell name
@@ -114,7 +114,7 @@ class ParserJSON:
             project_data (any): Project json data
 
         Returns:
-            list[TransitionGeometry]: List of transitions geometries from the project file
+            List[TransitionGeometry]: List of transitions geometries from the project file
         """
         transition_geometries: List[TransitionGeometry] = []
         transition_geometry = list(
