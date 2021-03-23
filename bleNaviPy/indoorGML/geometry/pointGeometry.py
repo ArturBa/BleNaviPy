@@ -9,7 +9,7 @@ class Point:
     Contains 2D point location
     """
 
-    def __init__(self, x: float, y: float) -> Point:
+    def __init__(self, x: float, y: float) -> None:
         self.x = x
         self.y = y
 
@@ -39,7 +39,7 @@ class Point:
         return self.x == point.x and self.y == point.y
 
     def __str__(self) -> str:
-        return f"Location x: {self.x}\ty: {self.y}"
+        return f"Point [{self.x}; {self.y}]"
 
     def __add__(self, point: Point) -> Point:
         """Add 2 points

@@ -5,48 +5,48 @@ from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 
 
 class PointTest(unittest.TestCase):
-    location = Point(1, 2)
+    point = Point(1, 2)
 
     def testInit(self):
-        self.assertEqual(1, self.location.x)
-        self.assertEqual(2, self.location.y)
+        self.assertEqual(1, self.point.x)
+        self.assertEqual(2, self.point.y)
 
     def testEquability(self):
-        location2: Location = Point(1, 2)
-        self.assertTrue(location2, self.location)
+        point2: Point = Point(1, 2)
+        self.assertTrue(point2, self.point)
 
     def testString(self):
-        self.assertTrue(self.location.__str__(), "Location x: 1\ty: 2")
+        self.assertTrue(self.point.__str__(), "Point [1; 2]")
 
     def testAdd(self):
-        location2: Location = Point(2, 1)
-        location2 = location2 + self.location
-        self.assertEqual(3, location2.x)
-        self.assertEqual(3, location2.y)
+        point2: Point = Point(2, 1)
+        point2 = point2 + self.point
+        self.assertEqual(3, point2.x)
+        self.assertEqual(3, point2.y)
 
     def testAddOneArg(self):
-        location2: Location = Point(2, 1)
-        location2 += self.location
-        self.assertEqual(3, location2.x)
-        self.assertEqual(3, location2.y)
+        point2: Point = Point(2, 1)
+        point2 += self.point
+        self.assertEqual(3, point2.x)
+        self.assertEqual(3, point2.y)
 
     def testSub(self):
-        location2: Location = Point(2, 1)
-        location2 = location2 - self.location
-        self.assertEqual(1, location2.x)
-        self.assertEqual(-1, location2.y)
+        point2: Point = Point(2, 1)
+        point2 = point2 - self.point
+        self.assertEqual(1, point2.x)
+        self.assertEqual(-1, point2.y)
 
     def testSubOneArg(self):
-        location2: Location = Point(2, 1)
-        location2 -= self.location
-        self.assertEqual(1, location2.x)
-        self.assertEqual(-1, location2.y)
+        point2: Point = Point(2, 1)
+        point2 -= self.point
+        self.assertEqual(1, point2.x)
+        self.assertEqual(-1, point2.y)
 
     def testDistance(self):
-        location2: Location = Point(1, 1)
-        location3: Location = Point(0, 1)
-        self.assertEqual(1, self.location.distance(location2))
-        self.assertEqual(math.sqrt(2), self.location.distance(location3))
+        point2: Point = Point(1, 1)
+        point3: Point = Point(0, 1)
+        self.assertEqual(1, self.point.distance(point2))
+        self.assertEqual(math.sqrt(2), self.point.distance(point3))
 
 
 if __name__ == "__main__":
