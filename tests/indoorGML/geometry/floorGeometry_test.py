@@ -15,7 +15,7 @@ LOGGER = logging.getLogger(__name__)
 class LocationTest(unittest.TestCase):
     cellName = "cellName"
     cellPoints = [Point(0, 0), Point(1, 1)]
-    cellGeometry = [CellGeometry(cellName, cellPoints)]
+    cellGeometry = [CellGeometry("C1", cellName, cellPoints)]
 
     transitionPoints = [Point(0.1, 0.1), Point(0.5, 0.5)]
     transitionGeometry = [TransitionGeometry(transitionPoints)]

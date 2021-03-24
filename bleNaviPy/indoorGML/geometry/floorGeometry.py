@@ -26,9 +26,6 @@ class FloorGeometry:
         Args:
             cells (List[CellGeometry]): List of cells on floor
             transitions (List[TransitionGeometry]): List of transition on floor
-
-        Returns:
-            FloorGeometry:
         """
         self.cells: List[CellGeometry] = cells
         self.transitions: List[TransitionGeometry] = transitions
@@ -94,3 +91,9 @@ class FloorGeometry:
                 f"Cannot adopt {point} to any known transition. Please check configuration"
             )
         return p
+
+    def getCellByLocation(self, location: Point) -> CellGeometry:
+        pass
+
+    def getCellNameByLocation(self, location: Point) -> str:
+        pass
