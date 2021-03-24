@@ -47,7 +47,8 @@ class LocationTest(unittest.TestCase):
         with self._caplog.at_level(logging.INFO):
             self.cellGeometry.addHole(hole_geometry)
             assert (
-                f"Hole is member of: {hole_geometry.memberOf} while cell id is: {self.cellId}"
+                f"Hole is member of: {hole_geometry.memberOf} "
+                + f"while cell id is: {self.cellId}"
                 in self._caplog.text
             )
 
@@ -63,7 +64,15 @@ class LocationTest(unittest.TestCase):
         self.assertTrue(self.cellGeometry.isPointInside(Point(0.5, 0.5)))
         self.assertFalse(self.cellGeometry.isPointInside(Point(5, 5)))
         self.assertTrue(self.cellGeometry.isPointInside(Point(0.5, 1)))
-        # self.assertTrue(self.cellGeometry.isPointInside(Point(0.1, 0)))
+
+    def testIsInsideWithHole(self):
+        hole_geometry = HoleGeometry(
+            [Point(0.3, 0.3), Point(0.3, 0.5), Point(0.5, 0.5), Point(0.5, 0.3)],
+            self.cellId,
+        )
+        self.cellGeometry.addHole(hole_geometry)
+        self.assertFalse(self.cellGeometry.isPointInside(Point(0.4, 0.4)))
+        self.assertTrue(self.cellGeometry.isPointInside(Point(0.2, 0.2)))
 
 
 if __name__ == "__main__":

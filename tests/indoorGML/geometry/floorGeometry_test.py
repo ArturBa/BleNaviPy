@@ -14,7 +14,7 @@ LOGGER = logging.getLogger(__name__)
 
 class LocationTest(unittest.TestCase):
     cellName = "cellName"
-    cellPoints = [Point(0, 0), Point(1, 1)]
+    cellPoints = [Point(0, 0), Point(0, 1), Point(1, 1), Point(1, 0)]
     cellGeometry = [CellGeometry("C1", cellName, cellPoints)]
 
     transitionPoints = [Point(0.1, 0.1), Point(0.5, 0.5)]
@@ -65,6 +65,10 @@ class LocationTest(unittest.TestCase):
             assert "Cannot adopt Point" in self._caplog.text
             self.assertAlmostEqual(0.2, location.x, places=4)
             self.assertAlmostEqual(0.3, location.y, places=4)
+
+    def testCellByLocation(self):
+        point: Point = Point(0.3, 0.3)
+        self.assertEqual(self.cellGeometry[0], self.floor.getCellByLocation(point))
 
 
 if __name__ == "__main__":

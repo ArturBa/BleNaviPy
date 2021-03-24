@@ -46,22 +46,38 @@ class CellGeometry:
         self.holes.append(hole.boundary)
 
     def isPointInside(self, point: Point) -> bool:
-        ans = False
-        for i in range(len(self.points)):
-            x0 = self.points[i].x
-            y0 = self.points[i].y
-            x1 = self.points[(i + 1) % len(self.points)].x
-            y1 = self.points[(i + 1) % len(self.points)].y
-            if not min(y0, y1) < point.y <= max(y0, y1):
-                continue
-            if point.x < min(x0, x1):
-                continue
-            cur_x = x0 if x0 == x1 else x0 + (point.y - y0) * (x1 - x0) / (y1 - y0)
-            ans ^= point.x > cur_x
-        return ans
+        is_in_cell: bool = self._isInsideCell(point)
+        logging.info(is_in_cell)
+        for i in range(len(self.holes)):
+            if self._isInsideHole(point, i):
+                logging.info("In a hole")
+                return False
+        return is_in_cell
+
+    def _isInsideCell(self, point: Point) -> bool:
+        return isPointInsidePolynomial(self.points, point)
+
+    def _isInsideHole(self, point: Point, hole_id: int) -> bool:
+        return isPointInsidePolynomial(self.holes[hole_id], point)
 
     def __str__(self) -> str:
         s: str = ""
         for point in self.points:
             s += f"[{point.x}, {point.y}]"
         return f"Cell: {self.name} Points: " + s
+
+
+def isPointInsidePolynomial(polynomial: List[Point], point: Point) -> bool:
+    ans = False
+    for i in range(len(polynomial)):
+        x0 = polynomial[i].x
+        y0 = polynomial[i].y
+        x1 = polynomial[(i + 1) % len(polynomial)].x
+        y1 = polynomial[(i + 1) % len(polynomial)].y
+        if not min(y0, y1) < point.y <= max(y0, y1):
+            continue
+        if point.x < min(x0, x1):
+            continue
+        cur_x = x0 if x0 == x1 else x0 + (point.y - y0) * (x1 - x0) / (y1 - y0)
+        ans ^= point.x > cur_x
+    return ans

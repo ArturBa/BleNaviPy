@@ -93,7 +93,6 @@ class FloorGeometry:
         return p
 
     def getCellByLocation(self, location: Point) -> CellGeometry:
-        pass
-
-    def getCellNameByLocation(self, location: Point) -> str:
-        pass
+        for cell in self.cells:
+            if cell.isPointInside(location):
+                return cell
