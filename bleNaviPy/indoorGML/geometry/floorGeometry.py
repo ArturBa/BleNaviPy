@@ -57,8 +57,9 @@ class FloorGeometry:
 
         centers: List[Point] = [b.location for b in self.beacons]
         distances: List[float] = [
-            user_location.distance(b.location) for b in self.beacons
+            b.getDistanceByRSSI(b.getRSSI(user_location)) for b in self.beacons
         ]
+
         length = len(centers)
         distances_sum = sum(distances)
 
