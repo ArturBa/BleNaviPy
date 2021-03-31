@@ -1,0 +1,7 @@
+bleNaviPy.indoorGML.geometry.holeGeometry module
+================================================
+
+.. automodule:: bleNaviPy.indoorGML.geometry.holeGeometry
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -9,6 +9,7 @@ Submodules
 
    bleNaviPy.indoorGML.geometry.cellGeometry
    bleNaviPy.indoorGML.geometry.floorGeometry
+   bleNaviPy.indoorGML.geometry.holeGeometry
    bleNaviPy.indoorGML.geometry.pointGeometry
    bleNaviPy.indoorGML.geometry.transitionGeometry
 
