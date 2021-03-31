@@ -19,24 +19,29 @@ class FloorGeometry:
     """
 
     def __init__(
-        self, cells: List[CellGeometry], transitions: List[TransitionGeometry]
+        self,
+        cells: List[CellGeometry],
+        transitions: List[TransitionGeometry],
+        beacons: List[Beacon] = None,
     ) -> None:
         """Constructor
 
         Args:
             cells (List[CellGeometry]): List of cells on floor
             transitions (List[TransitionGeometry]): List of transition on floor
-
-        Returns:
-            FloorGeometry:
+            beacons (List[Beacon], optional): [description]. Defaults to None.
         """
         self.cells: List[CellGeometry] = cells
         self.transitions: List[TransitionGeometry] = transitions
-        self.beacons: List[Beacon] = []
+        self.beacons: List[Beacon] = [] if beacons is None else beacons
         self.users: List[Point] = []
+        self.scale = 1
 
     def __str__(self) -> str:
         return f"Floor. Cells: {len(self.cells)}"
+
+    def setScale(self, scale: float) -> None:
+        self.scale = scale
 
     def getUserLocation(
         self, user_id: int = 0, get_on_transition: bool = False

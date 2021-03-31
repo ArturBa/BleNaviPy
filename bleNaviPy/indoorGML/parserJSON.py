@@ -22,7 +22,7 @@ class ParserJSON:
     _cell_properties = "cellProperties"
 
     @staticmethod
-    def getGeometryFromFile(filename: str) -> FloorGeometry:
+    def getGeometryFromIndoorGMLFile(filename: str) -> FloorGeometry:
         """Get floor geometry from json file
 
         Args:
@@ -34,7 +34,7 @@ class ParserJSON:
         Examples:
             >>> from bleNaviPy.indoorGML.parserJSON import ParserJSON
             >>> from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
-            >>> floor: FloorGeometry = ParserJSON.getGeometryFromFile("test.json")
+            >>> floor: FloorGeometry = ParserJSON.getGeometryFromIndoorGMLFile("test.json")
             Floor: Cells: 3
 
         """

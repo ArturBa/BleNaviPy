@@ -58,13 +58,13 @@ class LocationTest(unittest.TestCase):
         self._caplog = caplog
 
     def testGetGeometryFromFile(self):
-        floor: FloorGeometry = ParserJSON.getGeometryFromFile(self.filename)
+        floor: FloorGeometry = ParserJSON.getGeometryFromIndoorGMLFile(self.filename)
         self.assertEqual(5, len(floor.cells))
 
     def testGetGeometryFromFileFailure(self):
         fake_path: str = "tests/indoorGML/nonExisting.json"
         with self._caplog.at_level(logging.INFO):
-            floor: FloorGeometry = ParserJSON.getGeometryFromFile(fake_path)
+            floor: FloorGeometry = ParserJSON.getGeometryFromIndoorGMLFile(fake_path)
             assert (
                 f"File {fake_path} open error. Please check the path"
                 in self._caplog.text
