@@ -22,6 +22,11 @@ jobs:
         - coverage run --omit 'venv/*','tests/*' -m py.test
         - bash <(curl -s https://codecov.io/bash)
 
+    - stage: docsCoverage
+      name: "Check docs coverage"
+      script:
+        - docstr-coverage -m -F 70 -P bleNaviPy
+
     - stage: deploy
       branches:
         only:
@@ -33,7 +38,7 @@ jobs:
         - make html
         - make html
         - cd ..
-        - docstr-coverage -m -P bleNaviPy -b docs/build/html/doc_coverage
+        - docstr-coverage -m -F 0 -P bleNaviPy -b docs/build/html/doc_coverage
       deploy:
         provider: pages # deploy on github pages
         project_name: BleNaviPy
