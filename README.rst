@@ -1,7 +1,7 @@
 BleNaviPy
 =========
 
-|Coverage Status| |Build Status| |Code style: black|
+|Coverage Status| |Build Status| |Code style: black| |Docstr coverage|
 
 .. |Coverage Status| image:: https://codecov.io/gh/ArturBa/BleNaviPy/branch/development/graph/badge.svg?token=FOHLSZU5X0
    :target: https://codecov.io/gh/ArturBa/BleNaviPy
