@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>bleNaviPy.indoorGML.geometry.cellGeometry module &#8212; BleNaviPy 0.1.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
@@ -30,8 +31,9 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-bleNaviPy.indoorGML.geometry.cellGeometry">
+  <section id="module-bleNaviPy.indoorGML.geometry.cellGeometry">
 <span id="blenavipy-indoorgml-geometry-cellgeometry-module"></span><h1>bleNaviPy.indoorGML.geometry.cellGeometry module<a class="headerlink" href="#module-bleNaviPy.indoorGML.geometry.cellGeometry" title="Permalink to this headline">¶</a></h1>
+<p>This is a module for cell geometry for indoorGML</p>
 <dl class="py class">
 <dt id="bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.geometry.cellGeometry.</span></code><code class="sig-name descname"><span class="pre">CellGeometry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry" title="Permalink to this definition">¶</a></dt>
@@ -41,21 +43,54 @@ Contains information about cell shape and name</p>
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry.addHole">
 <code class="sig-name descname"><span class="pre">addHole</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hole</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.holeGeometry.html#bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry" title="bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry.addHole" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Add hole to a cell</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hole</strong> (<em>HoleGeometry</em>)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry.isPointInside">
 <code class="sig-name descname"><span class="pre">isPointInside</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry.isPointInside" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Check if point inside a cell</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>point</strong> (<em>Point</em>)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Is inside of cell</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt id="bleNaviPy.indoorGML.geometry.cellGeometry.isPointInsidePolynomial">
 <code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.geometry.cellGeometry.</span></code><code class="sig-name descname"><span class="pre">isPointInsidePolynomial</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polynomial</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.cellGeometry.isPointInsidePolynomial" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Check if point is inside a polynomial</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>polynomial</strong> (<em>List[Point]</em>)</p></li>
+<li><p><strong>point</strong> (<em>Point</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Is point inside the polynomial</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
 
-</div>
+</section>
 
 
           </div>
@@ -74,7 +109,7 @@ Contains information about cell shape and name</p>
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="readme.html">BleNaviPy</a></li>
 </ul>

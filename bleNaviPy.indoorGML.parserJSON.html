@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>bleNaviPy.indoorGML.parserJSON module &#8212; BleNaviPy 0.1.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
@@ -30,8 +31,9 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-bleNaviPy.indoorGML.parserJSON">
+  <section id="module-bleNaviPy.indoorGML.parserJSON">
 <span id="blenavipy-indoorgml-parserjson-module"></span><h1>bleNaviPy.indoorGML.parserJSON module<a class="headerlink" href="#module-bleNaviPy.indoorGML.parserJSON" title="Permalink to this headline">¶</a></h1>
+<p>This is a module for parcing indoorGML json files</p>
 <dl class="py class">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.parserJSON.</span></code><code class="sig-name descname"><span class="pre">ParserJSON</span></code><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON" title="Permalink to this definition">¶</a></dt>
@@ -40,7 +42,16 @@
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.addHolesToCells">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">addHolesToCells</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.cellGeometry.html#bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry" title="bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.cellGeometry.CellGeometry</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">holes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.holeGeometry.html#bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry" title="bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.addHolesToCells" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Add holes geometries to matching cells</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cells</strong> (<em>List[CellGeometry]</em>)</p></li>
+<li><p><strong>holes</strong> (<em>List[HoleGeometry]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getCellGeometries">
@@ -80,8 +91,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getGeometryFromFile">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getGeometryFromFile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="bleNaviPy.indoorGML.geometry.floorGeometry.html#bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry" title="bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getGeometryFromFile" title="Permalink to this definition">¶</a></dt>
+<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getGeometryFromIndoorGMLFile">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getGeometryFromIndoorGMLFile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="bleNaviPy.indoorGML.geometry.floorGeometry.html#bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry" title="bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getGeometryFromIndoorGMLFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get floor geometry from json file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -97,7 +108,7 @@
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bleNaviPy.indoorGML.parserJSON</span> <span class="kn">import</span> <span class="n">ParserJSON</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bleNaviPy.indoorGML.geometry.floorGeometry</span> <span class="kn">import</span> <span class="n">FloorGeometry</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">floor</span><span class="p">:</span> <span class="n">FloorGeometry</span> <span class="o">=</span> <span class="n">ParserJSON</span><span class="o">.</span><span class="n">getGeometryFromFile</span><span class="p">(</span><span class="s2">&quot;test.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">floor</span><span class="p">:</span> <span class="n">FloorGeometry</span> <span class="o">=</span> <span class="n">ParserJSON</span><span class="o">.</span><span class="n">getGeometryFromIndoorGMLFile</span><span class="p">(</span><span class="s2">&quot;test.json&quot;</span><span class="p">)</span>
 <span class="go">Floor: Cells: 3</span>
 </pre></div>
 </div>
@@ -106,7 +117,19 @@
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getHolesGeometries">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getHolesGeometries</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.indoorGML.geometry.holeGeometry.html#bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry" title="bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getHolesGeometries" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get holes from a project file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>project_data</strong> (<em>any</em>) – Project json data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of holes geometries from the project file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="bleNaviPy.indoorGML.geometry.holeGeometry.html#bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry" title="bleNaviPy.indoorGML.geometry.holeGeometry.HoleGeometry">HoleGeometry</a>]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getProjectData">
@@ -144,7 +167,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
           </div>
@@ -163,7 +186,7 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="readme.html">BleNaviPy</a></li>
 </ul>

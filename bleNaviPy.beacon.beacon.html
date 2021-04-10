@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>bleNaviPy.beacon.beacon module &#8212; BleNaviPy 0.1.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
@@ -30,19 +31,50 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-bleNaviPy.beacon.beacon">
+  <section id="module-bleNaviPy.beacon.beacon">
 <span id="blenavipy-beacon-beacon-module"></span><h1>bleNaviPy.beacon.beacon module<a class="headerlink" href="#module-bleNaviPy.beacon.beacon" title="Permalink to this headline">¶</a></h1>
+<p>This is a module for beacon geometry</p>
 <dl class="py class">
 <dt id="bleNaviPy.beacon.beacon.Beacon">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.beacon.beacon.</span></code><code class="sig-name descname"><span class="pre">Beacon</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.beacon.beacon.Beacon" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.beacon.beacon.</span></code><code class="sig-name descname"><span class="pre">Beacon</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">location:</span> <span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></em>, <em class="sig-param"><span class="pre">beacon_type:</span> <span class="pre">Union[bleNaviPy.beacon.beacon.BeaconTypeEnum</span></em>, <em class="sig-param"><span class="pre">bleNaviPy.beacon.beacon.BeaconType]</span> <span class="pre">=</span> <span class="pre">&lt;BeaconTypeEnum.GENERIC:</span> <span class="pre">'generic'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.beacon.beacon.Beacon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class beacon
+Contains information about location of beacon</p>
+<dl class="py attribute">
+<dt id="bleNaviPy.beacon.beacon.Beacon.beaconType">
+<code class="sig-name descname"><span class="pre">beaconType</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'generic':</span> <span class="pre">&lt;bleNaviPy.beacon.beacon.BeaconType</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#bleNaviPy.beacon.beacon.Beacon.beaconType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="bleNaviPy.beacon.beacon.Beacon.getDistanceByRSSI">
+<code class="sig-name descname"><span class="pre">getDistanceByRSSI</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rssi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#bleNaviPy.beacon.beacon.Beacon.getDistanceByRSSI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get distance from a beacon by rssi</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rssi</strong> (<em>float</em>) – Signal strength</p></li>
+<li><p><strong>scale</strong> (<em>float, optional</em>) – Floor scale. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Distance from beacon using a map units</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="bleNaviPy.beacon.beacon.Beacon.getRSSI">
-<code class="sig-name descname"><span class="pre">getRSSI</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#bleNaviPy.beacon.beacon.Beacon.getRSSI" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">getRSSI</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.pointGeometry.html#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#bleNaviPy.beacon.beacon.Beacon.getRSSI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate RSSI on given location</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>location</strong> (<em>Location</em>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<em>Location</em>)</p></li>
+<li><p><strong>scale</strong> (<em>float, optional</em>) – Floor scale. Defaults to 1.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>RSSI in dB</p>
@@ -55,7 +87,31 @@
 
 </dd></dl>
 
-</div>
+<dl class="py class">
+<dt id="bleNaviPy.beacon.beacon.BeaconType">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.beacon.beacon.</span></code><code class="sig-name descname"><span class="pre">BeaconType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rssi_1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.beacon.beacon.BeaconType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Beacon type with default data</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="bleNaviPy.beacon.beacon.BeaconTypeEnum">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.beacon.beacon.</span></code><code class="sig-name descname"><span class="pre">BeaconTypeEnum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.beacon.beacon.BeaconTypeEnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Beacon types enum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Enum</strong></p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="bleNaviPy.beacon.beacon.BeaconTypeEnum.GENERIC">
+<code class="sig-name descname"><span class="pre">GENERIC</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'generic'</span></em><a class="headerlink" href="#bleNaviPy.beacon.beacon.BeaconTypeEnum.GENERIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
 
 
           </div>
@@ -74,7 +130,7 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="readme.html">BleNaviPy</a></li>
 </ul>

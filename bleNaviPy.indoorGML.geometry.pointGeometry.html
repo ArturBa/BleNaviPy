@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>bleNaviPy.indoorGML.geometry.pointGeometry module &#8212; BleNaviPy 0.1.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
@@ -30,8 +31,9 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-bleNaviPy.indoorGML.geometry.pointGeometry">
+  <section id="module-bleNaviPy.indoorGML.geometry.pointGeometry">
 <span id="blenavipy-indoorgml-geometry-pointgeometry-module"></span><h1>bleNaviPy.indoorGML.geometry.pointGeometry module<a class="headerlink" href="#module-bleNaviPy.indoorGML.geometry.pointGeometry" title="Permalink to this headline">¶</a></h1>
+<p>This is a module for point geometry in indoorGML geometry</p>
 <dl class="py class">
 <dt id="bleNaviPy.indoorGML.geometry.pointGeometry.Point">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.</span></code><code class="sig-name descname"><span class="pre">Point</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="Permalink to this definition">¶</a></dt>
@@ -40,11 +42,14 @@
 Contains 2D point location</p>
 <dl class="py method">
 <dt id="bleNaviPy.indoorGML.geometry.pointGeometry.Point.distance">
-<code class="sig-name descname"><span class="pre">distance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.pointGeometry.Point.distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">distance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bleNaviPy.indoorGML.geometry.pointGeometry.Point" title="bleNaviPy.indoorGML.geometry.pointGeometry.Point"><span class="pre">bleNaviPy.indoorGML.geometry.pointGeometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.geometry.pointGeometry.Point.distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate distance between 2 locations</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>point</strong> (<em>Point</em>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<em>Point</em>)</p></li>
+<li><p><strong>scale</strong> (<em>float, optional</em>) – Floor scale. Defaults to 1.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>distance between point</p>
@@ -57,7 +62,7 @@ Contains 2D point location</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
           </div>
@@ -76,7 +81,7 @@ Contains 2D point location</p>
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="readme.html">BleNaviPy</a></li>
 </ul>

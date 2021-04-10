@@ -9,7 +9,6 @@ Subpackages
 
    bleNaviPy.beacon
    bleNaviPy.indoorGML
-   bleNaviPy.utils
 
 Module contents
 ---------------
