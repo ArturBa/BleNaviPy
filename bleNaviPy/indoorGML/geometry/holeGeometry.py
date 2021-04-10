@@ -1,3 +1,4 @@
+"""This is a module for hole geometry for indoorGML """
 from __future__ import annotations
 
 from typing import List
@@ -12,6 +13,12 @@ class HoleGeometry:
     """
 
     def __init__(self, boundary: List[Point], member_of: str) -> None:
+        """Constructor
+
+        Args:
+            boundary (List[Point]): Boundary of hole
+            member_of (str): Cell id
+        """
         self.boundary: List[Point] = boundary
         self.memberOf: str = member_of
 

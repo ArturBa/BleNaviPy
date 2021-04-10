@@ -9,3 +9,5 @@ BleNaviPy
    :target: https://www.travis-ci.com/ArturBa/BleNaviPy
 .. |Code style: black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
+-- |Docstr coverage| image:: https://arturba.github.io/BleNaviPy/doc_coverage.svg
+    :target: https://github.com/HunterMcGushion/docstr_coverage

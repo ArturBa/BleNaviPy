@@ -49,6 +49,16 @@ class LocationTest(unittest.TestCase):
                     ],
                 },
             ],
+            "holeGeometry": [
+                {
+                    "holeOf": "001",
+                    "points": [
+                        {"point": {"x": 1.1, "y": 1.1}},
+                        {"point": {"x": 1.1, "y": 1.2}},
+                        {"point": {"x": 1.2, "y": 1.1}},
+                    ],
+                }
+            ],
         },
         "propertyContainer": {"cellProperties": [{"id": "001", "name": "name001"}]},
     }
@@ -90,6 +100,16 @@ class LocationTest(unittest.TestCase):
     def testTransitionGeometries(self):
         l_transition_geom = ParserJSON.getTransitionGeometries(self.projectData)
         self.assertEqual(2, len(l_transition_geom))
+
+    def testHolesGeometries(self):
+        holes_geom = ParserJSON.getHolesGeometries(self.projectData)
+        self.assertEqual(1, len(holes_geom))
+
+    def testAddingHolesToCell(self):
+        cell_geom = ParserJSON.getCellGeometries(self.projectData)
+        holes_geom = ParserJSON.getHolesGeometries(self.projectData)
+        ParserJSON.addHolesToCells(cell_geom, holes_geom)
+        self.assertEqual(1, len(cell_geom[0].holes))
 
 
 if __name__ == "__main__":

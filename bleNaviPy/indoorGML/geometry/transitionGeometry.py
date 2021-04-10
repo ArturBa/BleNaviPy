@@ -1,3 +1,4 @@
+"""This is a module for transition geometry for indoorGML """
 from __future__ import annotations
 
 from typing import List
@@ -76,18 +77,19 @@ class TransitionGeometry:
             [self.points[i - 1], self.points[i]] for i in range(1, len(self.points))
         ]
 
-    def getDistance(self, point: Point, precision: int = 4) -> float:
+    def getDistance(self, point: Point, precision: int = 4, scale: float = 1) -> float:
         """Get distance of a point to the closest segment of transition
 
         Args:
             point (Point): Point to check
             precision (int, optional): [Return value precision]. Defaults to 4.
+            scale (float, optional): Floor scale. Defaults to 1.
 
         Returns:
             float: Distance to the segment rounded to (precision) decimal places
         """
         closest_point: Point = self.getClosestPoint(point)
-        distance: float = point.distance(closest_point)
+        distance: float = point.distance(closest_point, scale)
         return round(distance, precision)
 
     def _getClosestSegmentId(self, point: Point) -> int:

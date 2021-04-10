@@ -1,3 +1,4 @@
+"""This is a module for point geometry in indoorGML geometry"""
 from __future__ import annotations
 
 import math
@@ -10,14 +11,21 @@ class Point:
     """
 
     def __init__(self, x: float, y: float) -> None:
+        """Constructor
+
+        Args:
+            x (float):
+            y (float):
+        """
         self.x = x
         self.y = y
 
-    def distance(self, point: Point) -> float:
+    def distance(self, point: Point, scale: float = 1) -> float:
         """Calculate distance between 2 locations
 
         Args:
             point (Point):
+            scale (float, optional): Floor scale. Defaults to 1.
 
         Returns:
             float: distance between point
@@ -25,7 +33,7 @@ class Point:
         x_distance = math.pow(self.x - point.x, 2)
         y_distance = math.pow(self.y - point.y, 2)
         distance = math.sqrt(x_distance + y_distance)
-        return distance
+        return distance * scale
 
     def __eq__(self, point: Point) -> bool:
         """Check if points are equal

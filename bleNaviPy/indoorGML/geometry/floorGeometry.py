@@ -1,3 +1,4 @@
+"""This is a module for floor geometry for indoorGML """
 from __future__ import annotations
 
 import logging
@@ -41,6 +42,11 @@ class FloorGeometry:
         return f"Floor. Cells: {len(self.cells)}"
 
     def setScale(self, scale: float) -> None:
+        """Set scale according to a json file (to match a json units to meters)
+
+        Args:
+            scale (float): Scale factor
+        """
         self.scale = scale
 
     def getUserLocation(
@@ -50,7 +56,12 @@ class FloorGeometry:
         Returns:
             Location: User location
         """
+        assert user_id < len(self.users), "User out of users table"
+        assert user_id >= 0, "User out of users table"
+        assert type(user_id) == int, "Incorrect input of user_id"
+
         location = self._gpsSolve(self.users[user_id])
+        logging.info(f"User location for {self.users[user_id]} found: {location}")
         if not get_on_transition:
             return location
 
@@ -62,7 +73,8 @@ class FloorGeometry:
 
         centers: List[Point] = [b.location for b in self.beacons]
         distances: List[float] = [
-            b.getDistanceByRSSI(b.getRSSI(user_location)) for b in self.beacons
+            b.getDistanceByRSSI(b.getRSSI(user_location, self.scale), self.scale)
+            for b in self.beacons
         ]
 
         length = len(centers)
@@ -102,6 +114,14 @@ class FloorGeometry:
         return p
 
     def getCellByLocation(self, location: Point) -> CellGeometry:
+        """Get a cell by given location
+
+        Args:
+            location (Point):
+
+        Returns:
+            CellGeometry: found cell
+        """
         for cell in self.cells:
             if cell.isPointInside(location):
                 return cell
