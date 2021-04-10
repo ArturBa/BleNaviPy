@@ -6,6 +6,7 @@ from typing import List
 
 from bleNaviPy.indoorGML.geometry.cellGeometry import CellGeometry
 from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
+from bleNaviPy.indoorGML.geometry.holeGeometry import HoleGeometry
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
 
@@ -18,6 +19,7 @@ class ParserJSON:
     _geometry_container = "geometryContainer"
     _cell_geometry = "cellGeometry"
     _transition_geometry = "transitionGeometry"
+    _hole_geometry = "holeGeometry"
     _property_container = "propertyContainer"
     _cell_properties = "cellProperties"
 
@@ -42,10 +44,16 @@ class ParserJSON:
             open(filename, "r")
             json_data = json.load(open(filename, "r"))
             project_data = ParserJSON.getProjectData(json_data)
-            return FloorGeometry(
-                ParserJSON.getCellGeometries(project_data),
+
+            cells_geometry = ParserJSON.getCellGeometries(project_data)
+            holes_geometry = ParserJSON.getHolesGeometries(project_data)
+            ParserJSON.addHolesToCells(cells_geometry, holes_geometry)
+
+            floor_geometry: FloorGeometry = FloorGeometry(
+                cells_geometry,
                 ParserJSON.getTransitionGeometries(project_data),
             )
+            return floor_geometry
         except IOError:
             logging.error(f"File {filename} open error. Please check the path")
             return FloorGeometry([], [])
@@ -87,7 +95,7 @@ class ParserJSON:
                 x = points["point"]["x"]
                 y = points["point"]["y"]
                 cell_points.append(Point(x, y))
-            cell_geometries.append(CellGeometry(cell_name, cell_points))
+            cell_geometries.append(CellGeometry(cell["id"], cell_name, cell_points))
         return cell_geometries
 
     @staticmethod
@@ -130,3 +138,26 @@ class ParserJSON:
                 transition_points.append(Point(x, y))
             transition_geometries.append(TransitionGeometry(transition_points))
         return transition_geometries
+
+    @staticmethod
+    def getHolesGeometries(project_data: any) -> List[HoleGeometry]:
+        hole_geometries: List[HoleGeometry] = []
+        hole_geometry = list(
+            project_data[ParserJSON._geometry_container][ParserJSON._hole_geometry]
+        )
+        for hole in hole_geometry:
+            hole_point: List[Point] = []
+            for points in hole["points"]:
+                x = points["point"]["x"]
+                y = points["point"]["y"]
+                hole_point.append(Point(x, y))
+            hole_geometries.append(HoleGeometry(hole_point, hole["holeOf"]))
+
+        return hole_geometries
+
+    @staticmethod
+    def addHolesToCells(cells: List[CellGeometry], holes: List[HoleGeometry]) -> None:
+        for hole in holes:
+            for cell in cells:
+                if cell.id == hole.memberOf:
+                    cell.addHole(hole.boundary)

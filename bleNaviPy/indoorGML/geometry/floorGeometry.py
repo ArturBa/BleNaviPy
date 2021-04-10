@@ -100,3 +100,8 @@ class FloorGeometry:
                 f"Cannot adopt {point} to any known transition. Please check configuration"
             )
         return p
+
+    def getCellByLocation(self, location: Point) -> CellGeometry:
+        for cell in self.cells:
+            if cell.isPointInside(location):
+                return cell
