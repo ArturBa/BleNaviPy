@@ -7,3 +7,4 @@ pre-commit>=2.7.1
 Sphinx>=3.5.1
 sphinxcontrib-apidoc>=0.3.0
 Pygments>=2.8.0
+docstr-coverage>=2.0.1

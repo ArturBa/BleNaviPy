@@ -29,6 +29,7 @@ jobs:
       if: (NOT type IN (pull_request)) AND (branch = development)
       name: "Deploy GH-Docs"
       script:
+        - docstr-coverage -m -P bleNaviPy -b docs/build/html/doc_coverage
         - cd docs
         - make html
         - make html

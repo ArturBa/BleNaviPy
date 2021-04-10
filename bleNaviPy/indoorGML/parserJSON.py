@@ -1,3 +1,4 @@
+"""This is a module for parcing indoorGML json files"""
 from __future__ import annotations
 
 import json
@@ -24,7 +25,7 @@ class ParserJSON:
     _cell_properties = "cellProperties"
 
     @staticmethod
-    def getGeometryFromFile(filename: str) -> FloorGeometry:
+    def getGeometryFromIndoorGMLFile(filename: str) -> FloorGeometry:
         """Get floor geometry from json file
 
         Args:
@@ -36,7 +37,7 @@ class ParserJSON:
         Examples:
             >>> from bleNaviPy.indoorGML.parserJSON import ParserJSON
             >>> from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
-            >>> floor: FloorGeometry = ParserJSON.getGeometryFromFile("test.json")
+            >>> floor: FloorGeometry = ParserJSON.getGeometryFromIndoorGMLFile("test.json")
             Floor: Cells: 3
 
         """
@@ -141,6 +142,14 @@ class ParserJSON:
 
     @staticmethod
     def getHolesGeometries(project_data: any) -> List[HoleGeometry]:
+        """Get holes from a project file
+
+        Args:
+            project_data (any): Project json data
+
+        Returns:
+            List[HoleGeometry]: List of holes geometries from the project file
+        """
         hole_geometries: List[HoleGeometry] = []
         hole_geometry = list(
             project_data[ParserJSON._geometry_container][ParserJSON._hole_geometry]
@@ -157,7 +166,13 @@ class ParserJSON:
 
     @staticmethod
     def addHolesToCells(cells: List[CellGeometry], holes: List[HoleGeometry]) -> None:
+        """Add holes geometries to matching cells
+
+        Args:
+            cells (List[CellGeometry]):
+            holes (List[HoleGeometry]):
+        """
         for hole in holes:
             for cell in cells:
                 if cell.id == hole.memberOf:
-                    cell.addHole(hole.boundary)
+                    cell.addHole(hole)

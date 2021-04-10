@@ -1,3 +1,4 @@
+"""This is a module for floor geometry for indoorGML """
 from __future__ import annotations
 
 import logging
@@ -19,21 +20,34 @@ class FloorGeometry:
     """
 
     def __init__(
-        self, cells: List[CellGeometry], transitions: List[TransitionGeometry]
+        self,
+        cells: List[CellGeometry],
+        transitions: List[TransitionGeometry],
+        beacons: List[Beacon] = None,
     ) -> None:
         """Constructor
 
         Args:
             cells (List[CellGeometry]): List of cells on floor
             transitions (List[TransitionGeometry]): List of transition on floor
+            beacons (List[Beacon], optional): [description]. Defaults to None.
         """
         self.cells: List[CellGeometry] = cells
         self.transitions: List[TransitionGeometry] = transitions
-        self.beacons: List[Beacon] = []
+        self.beacons: List[Beacon] = [] if beacons is None else beacons
         self.users: List[Point] = []
+        self.scale = 1
 
     def __str__(self) -> str:
         return f"Floor. Cells: {len(self.cells)}"
+
+    def setScale(self, scale: float) -> None:
+        """Set scale according to a json file (to match a json units to meters)
+
+        Args:
+            scale (float): Scale factor
+        """
+        self.scale = scale
 
     def getUserLocation(
         self, user_id: int = 0, get_on_transition: bool = False
@@ -42,7 +56,12 @@ class FloorGeometry:
         Returns:
             Location: User location
         """
+        assert user_id < len(self.users), "User out of users table"
+        assert user_id >= 0, "User out of users table"
+        assert type(user_id) == int, "Incorrect input of user_id"
+
         location = self._gpsSolve(self.users[user_id])
+        logging.info(f"User location for {self.users[user_id]} found: {location}")
         if not get_on_transition:
             return location
 
@@ -54,8 +73,10 @@ class FloorGeometry:
 
         centers: List[Point] = [b.location for b in self.beacons]
         distances: List[float] = [
-            user_location.distance(b.location) for b in self.beacons
+            b.getDistanceByRSSI(b.getRSSI(user_location, self.scale), self.scale)
+            for b in self.beacons
         ]
+
         length = len(centers)
         distances_sum = sum(distances)
 
@@ -93,6 +114,14 @@ class FloorGeometry:
         return p
 
     def getCellByLocation(self, location: Point) -> CellGeometry:
+        """Get a cell by given location
+
+        Args:
+            location (Point):
+
+        Returns:
+            CellGeometry: found cell
+        """
         for cell in self.cells:
             if cell.isPointInside(location):
                 return cell

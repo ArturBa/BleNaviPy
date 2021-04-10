@@ -21,6 +21,7 @@ class LocationTest(unittest.TestCase):
     transitionGeometry = [TransitionGeometry(transitionPoints)]
 
     floor: FloorGeometry = FloorGeometry(cellGeometry, transitionGeometry)
+    floorScale = 0.5
 
     @pytest.fixture(autouse=True)
     def inject_fixtures(self, caplog):
@@ -37,6 +38,10 @@ class LocationTest(unittest.TestCase):
         self.assertEqual(len(self.cellGeometry), len(self.floor.cells))
         self.assertEqual(len(self.transitionGeometry), len(self.floor.transitions))
 
+    def testSetScale(self):
+        self.floor.setScale(self.floorScale)
+        self.assertEqual(self.floorScale, self.floor.scale)
+
     def testStringify(self):
         self.assertEqual(
             f"Floor. Cells: {len(self.cellGeometry)}", self.floor.__str__()
@@ -46,6 +51,14 @@ class LocationTest(unittest.TestCase):
         location = self.floor.getUserLocation()
         self.assertAlmostEqual(0.2, location.x, places=4)
         self.assertAlmostEqual(0.3, location.y, places=4)
+
+    def testUserLocationErrors(self):
+        with pytest.raises(AssertionError, match=r"User out of users table"):
+            self.floor.getUserLocation(-1)
+        with pytest.raises(AssertionError, match=r"User out of users table"):
+            self.floor.getUserLocation(100)
+        with pytest.raises(AssertionError, match=r"Incorrect input *"):
+            self.floor.getUserLocation(0.1)
 
     def testUserLocationOnTransition(self):
         location = self.floor.getUserLocation(get_on_transition=True)

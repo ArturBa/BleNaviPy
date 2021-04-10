@@ -1,3 +1,4 @@
+"""This is a module for cell geometry for indoorGML """
 from __future__ import annotations
 
 import logging
@@ -28,6 +29,11 @@ class CellGeometry:
         self.holes: List[List[Point]] = []
 
     def addHole(self, hole: HoleGeometry) -> None:
+        """Add hole to a cell
+
+        Args:
+            hole (HoleGeometry):
+        """
         if hole.memberOf is not self.id:
             logging.error(
                 f"Cannot add hole {hole} to {self.name}. "
@@ -46,6 +52,14 @@ class CellGeometry:
         self.holes.append(hole.boundary)
 
     def isPointInside(self, point: Point) -> bool:
+        """Check if point inside a cell
+
+        Args:
+            point (Point):
+
+        Returns:
+            bool: Is inside of cell
+        """
         is_in_cell: bool = self._isInsideCell(point)
         logging.info(is_in_cell)
         for i in range(len(self.holes)):
@@ -68,6 +82,15 @@ class CellGeometry:
 
 
 def isPointInsidePolynomial(polynomial: List[Point], point: Point) -> bool:
+    """Check if point is inside a polynomial
+
+    Args:
+        polynomial (List[Point]):
+        point (Point):
+
+    Returns:
+        bool: Is point inside the polynomial
+    """
     ans = False
     for i in range(len(polynomial)):
         x0 = polynomial[i].x
