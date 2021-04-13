@@ -93,3 +93,24 @@ class Beacon:
         distance: float = 10 ** ((self.RSSI_1 - rssi) / 10.0 / self.N) * 1 / scale
         logging.debug(f"{self} for {rssi} Distance: {distance} on scale {scale}")
         return distance
+
+    def getAccuracy(self, rssi: float) -> float:
+        """Get accuracy for a given RSSI
+        Based on: https://stackoverflow.com/questions/20416218/understanding-ibeacon-distancing#20434019
+
+        Args:
+            rssi (float): Signal strength
+
+        Returns:
+            float: [description] Accuracy of location
+        """
+        if rssi == 0:
+            logging.warning(f"{self} Cannot get accuracy for {rssi}")
+            return -1.0
+
+        ratio = rssi / self.RSSI_1
+        if ratio < 1:
+            return ratio ** 10
+
+        accuracy = 0.89976 * ratio ** 7.7095 + 0.111
+        return accuracy
