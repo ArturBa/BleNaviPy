@@ -104,9 +104,11 @@ class TransitionGeometry:
         segment_id = 0
         distance: float = float("inf")
         for i in range(len(self.segments)):
-            d: float = point.distance(getClosestPointOnSegment(point, self.segments[i]))
-            if d < distance:
-                distance = d
+            dist: float = point.distance(
+                getClosestPointOnSegment(point, self.segments[i])
+            )
+            if dist < distance:
+                distance = dist
                 segment_id = i
         return segment_id
 

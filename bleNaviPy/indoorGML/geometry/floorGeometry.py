@@ -51,7 +51,14 @@ class FloorGeometry:
         """
         self.scale = scale
 
-    def setWallDetection(self, wall_detection: bool) -> None:
+    def setWallDetection(self, wall_detection: bool = True) -> None:
+        """Set if floor should detect walls
+
+        Args:
+            wall_detection (bool, optional):
+             Should floor detect walls then checking RSSI for beacons.
+             Defaults to True.
+        """
         self.wall_detection = wall_detection
 
     def addUser(self, user: User) -> None:
@@ -169,7 +176,8 @@ class FloorGeometry:
 
         if distance == float("inf"):
             logging.error(
-                f"Cannot adopt {point} to any known transition. Please check configuration"
+                f"Cannot adopt {point} to any known transition. "
+                + "Please check configuration"
             )
         return p
 
