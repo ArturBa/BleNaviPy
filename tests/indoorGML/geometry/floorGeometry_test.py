@@ -4,6 +4,7 @@ import unittest
 import pytest
 
 from bleNaviPy.beacon.beacon import Beacon
+from bleNaviPy.beacon.user import User
 from bleNaviPy.indoorGML.geometry.cellGeometry import CellGeometry
 from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
@@ -20,6 +21,8 @@ class LocationTest(unittest.TestCase):
     transitionPoints = [Point(0.1, 0.1), Point(0.5, 0.5)]
     transitionGeometry = [TransitionGeometry(transitionPoints)]
 
+    user = User(Point(0.2, 0.3))
+
     floor: FloorGeometry = FloorGeometry(cellGeometry, transitionGeometry)
     floorScale = 0.5
 
@@ -32,7 +35,7 @@ class LocationTest(unittest.TestCase):
         self.floor.beacons.append(Beacon(Point(0, 0)))
         self.floor.beacons.append(Beacon(Point(0, 2)))
         self.floor.beacons.append(Beacon(Point(2, 0)))
-        self.floor.users.append(Point(0.2, 0.3))
+        self.floor.addUser(self.user)
 
     def testInit(self):
         self.assertEqual(len(self.cellGeometry), len(self.floor.cells))
@@ -71,13 +74,33 @@ class LocationTest(unittest.TestCase):
         floor.beacons.append(Beacon(Point(0, 0)))
         floor.beacons.append(Beacon(Point(0, 2)))
         floor.beacons.append(Beacon(Point(2, 0)))
-        floor.users.append(Point(0.2, 0.3))
+        floor.addUser(self.user)
 
         with self._caplog.at_level(logging.INFO):
             location = floor.getUserLocation(get_on_transition=True)
             assert "Cannot adopt Point" in self._caplog.text
             self.assertAlmostEqual(0.2, location.x, places=4)
             self.assertAlmostEqual(0.3, location.y, places=4)
+
+    def testUserLocation1Beacon(self):
+        floor: FloorGeometry = FloorGeometry(self.cellGeometry, [])
+        floor.beacons.append(Beacon(Point(2, 2)))
+        floor.addUser(self.user)
+
+        with self._caplog.at_level(logging.WARNING):
+            location = floor.getUserLocation()
+            assert "Cannot estimate user location" in self._caplog.text
+            self.assertEqual(Point(0, 0), location)
+
+    def testUserLocation2Beacon(self):
+        floor: FloorGeometry = FloorGeometry(self.cellGeometry, [])
+        floor.beacons.append(Beacon(Point(2, 2)))
+        floor.beacons.append(Beacon(Point(0, 2)))
+        floor.addUser(self.user)
+
+        with self._caplog.at_level(logging.WARNING):
+            location = floor.getUserLocation()
+            assert "This estimate will be uncertain." in self._caplog.text
 
     def testCellByLocation(self):
         point: Point = Point(0.3, 0.3)
