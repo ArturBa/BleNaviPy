@@ -65,11 +65,17 @@ class FloorGeometryTest(unittest.TestCase):
         self.assertAlmostEqual(0.2, location.x, places=4)
         self.assertAlmostEqual(0.3, location.y, places=4)
 
-    # def testUserLocationWithWalls(self):
-    #     self.floor.setWallDetection(True)
-    #     location = self.floor.getUserLocation()
-    #     self.assertAlmostEqual(0.2, location.x, places=4)
-    #     self.assertAlmostEqual(0.3, location.y, places=4)
+    def testUserLocationWithWalls(self):
+        self.floor.setWallDetection(True)
+        self.floor.cells[0].points = [
+            Point(-1, -1),
+            Point(3, -1),
+            Point(3, 3),
+            Point(-1, 3),
+        ]
+        location = self.floor.getUserLocation()
+        self.assertAlmostEqual(0.2, location.x, places=4)
+        self.assertAlmostEqual(0.3, location.y, places=4)
 
     def testUserLocationErrors(self):
         with pytest.raises(AssertionError, match=r"User out of users table"):
