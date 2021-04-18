@@ -13,7 +13,11 @@ from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
 LOGGER = logging.getLogger(__name__)
 
 
-class LocationTest(unittest.TestCase):
+class FloorGeometrySub(FloorGeometry):
+    pass
+
+
+class FloorGeometryTest(unittest.TestCase):
     cellName = "cellName"
     cellPoints = [Point(0, 0), Point(0, 1), Point(1, 1), Point(1, 0)]
     cellGeometry = [CellGeometry("C1", cellName, cellPoints)]
@@ -23,7 +27,7 @@ class LocationTest(unittest.TestCase):
 
     user = User(Point(0.2, 0.3))
 
-    floor: FloorGeometry = FloorGeometry(cellGeometry, transitionGeometry)
+    floor: FloorGeometry
     floorScale = 0.5
 
     @pytest.fixture(autouse=True)
@@ -31,6 +35,7 @@ class LocationTest(unittest.TestCase):
         self._caplog = caplog
 
     def setUp(self):
+        self.floor = FloorGeometry(self.cellGeometry, self.transitionGeometry)
         self.floor.beacons.append(Beacon(Point(2, 2)))
         self.floor.beacons.append(Beacon(Point(0, 0)))
         self.floor.beacons.append(Beacon(Point(0, 2)))
@@ -50,10 +55,21 @@ class LocationTest(unittest.TestCase):
             f"Floor. Cells: {len(self.cellGeometry)}", self.floor.__str__()
         )
 
+    def testSetWallDetection(self):
+        self.assertFalse(self.floor.wall_detection)
+        self.floor.setWallDetection(True)
+        self.assertTrue(self.floor.wall_detection)
+
     def testUserLocation(self):
         location = self.floor.getUserLocation()
         self.assertAlmostEqual(0.2, location.x, places=4)
         self.assertAlmostEqual(0.3, location.y, places=4)
+
+    # def testUserLocationWithWalls(self):
+    #     self.floor.setWallDetection(True)
+    #     location = self.floor.getUserLocation()
+    #     self.assertAlmostEqual(0.2, location.x, places=4)
+    #     self.assertAlmostEqual(0.3, location.y, places=4)
 
     def testUserLocationErrors(self):
         with pytest.raises(AssertionError, match=r"User out of users table"):
@@ -69,42 +85,41 @@ class LocationTest(unittest.TestCase):
         self.assertAlmostEqual(0.25, location.y, places=4)
 
     def testUserLocationNoTransitionAdded(self):
-        floor: FloorGeometry = FloorGeometry(self.cellGeometry, [])
-        floor.beacons.append(Beacon(Point(2, 2)))
-        floor.beacons.append(Beacon(Point(0, 0)))
-        floor.beacons.append(Beacon(Point(0, 2)))
-        floor.beacons.append(Beacon(Point(2, 0)))
-        floor.addUser(self.user)
+        self.floor.transitions = []
 
         with self._caplog.at_level(logging.INFO):
-            location = floor.getUserLocation(get_on_transition=True)
+            location = self.floor.getUserLocation(get_on_transition=True)
             assert "Cannot adopt Point" in self._caplog.text
             self.assertAlmostEqual(0.2, location.x, places=4)
             self.assertAlmostEqual(0.3, location.y, places=4)
 
     def testUserLocation1Beacon(self):
-        floor: FloorGeometry = FloorGeometry(self.cellGeometry, [])
-        floor.beacons.append(Beacon(Point(2, 2)))
-        floor.addUser(self.user)
+        self.floor.transitions = []
+        self.floor.beacons = [Beacon(Point(2, 2))]
 
         with self._caplog.at_level(logging.WARNING):
-            location = floor.getUserLocation()
+            location = self.floor.getUserLocation()
             assert "Cannot estimate user location" in self._caplog.text
             self.assertEqual(Point(0, 0), location)
 
     def testUserLocation2Beacon(self):
-        floor: FloorGeometry = FloorGeometry(self.cellGeometry, [])
-        floor.beacons.append(Beacon(Point(2, 2)))
-        floor.beacons.append(Beacon(Point(0, 2)))
-        floor.addUser(self.user)
+        self.floor.transitions = []
+        self.floor.beacons = [Beacon(Point(2, 2)), Beacon(Point(0, 2))]
 
         with self._caplog.at_level(logging.WARNING):
-            location = floor.getUserLocation()
+            location = self.floor.getUserLocation()
             assert "This estimate will be uncertain." in self._caplog.text
 
     def testCellByLocation(self):
         point: Point = Point(0.3, 0.3)
         self.assertEqual(self.cellGeometry[0], self.floor.getCellByLocation(point))
+
+    def testIntersection(self):
+        floor: FloorGeometrySub = FloorGeometrySub(
+            self.cellGeometry, self.transitionGeometry
+        )
+        self.assertTrue(floor._isWallOnPath(Point(0.5, 0.5), Point(1.5, 0.5)))
+        self.assertFalse(floor._isWallOnPath(Point(0.5, 0.5), Point(0.7, 0.5)))
 
 
 if __name__ == "__main__":

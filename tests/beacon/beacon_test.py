@@ -20,6 +20,11 @@ class BeaconTest(unittest.TestCase):
         self.beacon.RSSI_1 = -69
         self.assertAlmostEqual(-75, self.beacon.getRSSI(location), 1)
 
+    def testRSSI_2m(self):
+        location = Point(1, 3)
+        self.beacon.RSSI_1 = -69
+        self.assertGreater(-75, self.beacon.getRSSI(location, is_wall=True))
+
     def testLocationByRSSI(self):
         location = Point(1, 3)
         self.assertAlmostEqual(
