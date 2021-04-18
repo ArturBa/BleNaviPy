@@ -76,37 +76,51 @@ class FloorGeometry:
 
         return self._getPointOnClosestTransition(location)
 
+    def getCellByLocation(self, location: Point) -> CellGeometry:
+        """Get a cell by given location
+
+        Args:
+            location (Point):
+
+        Returns:
+            CellGeometry: found cell
+        """
+        for cell in self.cells:
+            if cell.isPointInside(location):
+                return cell
+
     def _gpsSolve(self, user: User) -> Point:
         def _error(x, c, r):
             return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(len(c))])
 
-        [centers, distances] = self._getCentersAndDistances(user)
-
-        if not self._isEnoughBeacons(centers):
+        [beacon_centers, beacon_distance] = self._getBeaconsData(user)
+        if not self._isEnoughBeacons(beacon_centers):
             return Point(0, 0)
 
-        length = len(centers)
-        distances_sum = sum(distances)
+        length = len(beacon_centers)
+        distances_sum = sum(beacon_distance)
 
         # compute weight vector for initial guess
         weight_vector: List[float] = [
-            ((length - 1) * distances_sum) / (distances_sum - d) for d in distances
+            ((length - 1) * distances_sum) / (distances_sum - d)
+            for d in beacon_distance
         ]
         # get initial guess of point location
         x0: List[float] = [
-            sum([weight_vector[i] * centers[i].x for i in range(length)]),
-            sum([weight_vector[i] * centers[i].y for i in range(length)]),
+            sum([weight_vector[i] * beacon_centers[i].x for i in range(length)]),
+            sum([weight_vector[i] * beacon_centers[i].y for i in range(length)]),
         ]
-        centers_f: List[List[float]] = []
-        for c in centers:
-            centers_f.append([c.x, c.y])
+        centers_f: List[List[float]] = [[bc.x, bc.y] for bc in beacon_centers]
         # optimize distance from signal origin to border of spheres
         found_location = minimize(
-            _error, np.array(x0), args=(centers_f, distances), method="Nelder-Mead"
+            _error,
+            np.array(x0),
+            args=(centers_f, beacon_distance),
+            method="Nelder-Mead",
         ).x
         return Point(found_location[0], found_location[1])
 
-    def _getCentersAndDistances(self, user: User) -> [List[Point], Point[float]]:
+    def _getBeaconsData(self, user: User) -> [List[Point], List[float]]:
         centers: List[Point] = []
         distances: List[float] = []
         for b in self.beacons:
@@ -121,7 +135,8 @@ class FloorGeometry:
                 distances.append(b.getDistanceByRSSI(rssi, self.scale))
         return [centers, distances]
 
-    def _isEnoughBeacons(self, centers: List[Point]) -> bool:
+    @staticmethod
+    def _isEnoughBeacons(centers: List[Point]) -> bool:
         if len(centers) == 1:
             logging.warning(
                 f"Using {len(centers)} for location estimation."
@@ -149,16 +164,3 @@ class FloorGeometry:
                 f"Cannot adopt {point} to any known transition. Please check configuration"
             )
         return p
-
-    def getCellByLocation(self, location: Point) -> CellGeometry:
-        """Get a cell by given location
-
-        Args:
-            location (Point):
-
-        Returns:
-            CellGeometry: found cell
-        """
-        for cell in self.cells:
-            if cell.isPointInside(location):
-                return cell
