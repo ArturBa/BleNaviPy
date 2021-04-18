@@ -24,14 +24,16 @@ class BeaconTypeEnum(Enum):
 class BeaconType:
     """Beacon type with default data"""
 
-    def __init__(self, rssi_1: int, n: float):
+    def __init__(self, rssi_1: int, n: float, n_wall: float) -> None:
         """
         Args:
             rssi_1 (int): Value of rssi in 1m distance
-            n (float): Medium resistance factor
+            n (float): Medium (air) resistance factor
+            n_wall (float): Medium (air+wall) resistance factor
         """
         self.RSSI_1 = rssi_1
         self.N = n
+        self.N_wall = n_wall
 
 
 class Beacon:
@@ -41,7 +43,7 @@ class Beacon:
     """
 
     beaconType = {
-        "generic": BeaconType(-80, 2),
+        "generic": BeaconType(-80, 2, 3),
     }
 
     def __init__(
@@ -60,24 +62,33 @@ class Beacon:
         self.location = location
         self.RSSI_1 = beacon_type.RSSI_1
         self.N = beacon_type.N
+        self.N_wall = beacon_type.N_wall
 
     def __str__(self):
         return f"Beacon: [{self.location}]"
 
-    def getRSSI(self, location: Point, scale: float = 1) -> float:
+    def getRSSI(
+        self, location: Point, scale: float = 1, is_wall: bool = False
+    ) -> float:
         """Calculate RSSI on given location
 
         Args:
             location (Location):
             scale (float, optional): Floor scale. Defaults to 1.
+            is_wall (bool, optional): Is wall on a way. Defaults to False.
 
         Returns:
             float: RSSI in dB
         """
         # Distance = 10 ^ ((Measured Power — RSSI) / (10 * N))
         distance = location.distance(self.location, scale)
-        signal_strength: float = -10 * self.N * math.log10(distance) + self.RSSI_1
-        logging.debug(f"{self} for {location} RSSI: {signal_strength}")
+        if is_wall:
+            signal_strength: float = (
+                -10 * self.N_wall * math.log10(distance) + self.RSSI_1
+            )
+        else:
+            signal_strength: float = -10 * self.N * math.log10(distance) + self.RSSI_1
+        logging.debug(f"{self} for {location} RSSI: {round(signal_strength, 2)}")
         return signal_strength
 
     def getDistanceByRSSI(self, rssi: float, scale: float = 1) -> float:
@@ -91,5 +102,7 @@ class Beacon:
             float: Distance from beacon using a map units
         """
         distance: float = 10 ** ((self.RSSI_1 - rssi) / 10.0 / self.N) * 1 / scale
-        logging.debug(f"{self} for {rssi} Distance: {distance} on scale {scale}")
+        logging.debug(
+            f"{self} for {round(rssi, 2)} Distance: {round(distance, 2)} on scale {scale}"
+        )
         return distance

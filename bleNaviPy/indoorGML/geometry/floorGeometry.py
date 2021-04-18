@@ -38,6 +38,7 @@ class FloorGeometry:
         self.beacons: List[Beacon] = [] if beacons is None else beacons
         self.users: List[User] = []
         self.scale = 1
+        self.wall_detection = False
 
     def __str__(self) -> str:
         return f"Floor. Cells: {len(self.cells)}"
@@ -49,6 +50,9 @@ class FloorGeometry:
             scale (float): Scale factor
         """
         self.scale = scale
+
+    def setWallDetection(self, wall_detection: bool) -> None:
+        self.wall_detection = wall_detection
 
     def addUser(self, user: User) -> None:
         """Add user to a floor
@@ -124,11 +128,15 @@ class FloorGeometry:
         centers: List[Point] = []
         distances: List[float] = []
         for b in self.beacons:
-            rssi: float = b.getRSSI(user.location, self.scale)
+            wall = False
+            if self.wall_detection:
+                wall = self._isWallOnPath(user.location, b.location)
+            rssi: float = b.getRSSI(user.location, self.scale, wall)
             logging.debug(
-                f"Checking {b}; RSSI: {round(rssi, 2)}, "
+                f"Checking {b}; RSSI: {round(rssi, 2):6}, "
                 + f"is available: {rssi>=user.minRSSI!s:>5}, "
-                + f"distance: {round(b.location.distance(user.location, self.scale), 2)}"
+                + f"distance: {round(b.location.distance(user.location, self.scale), 2):4} "
+                + f"with wall: {self.wall_detection}"
             )
             if rssi >= user.minRSSI:
                 centers.append(b.location)
@@ -164,3 +172,17 @@ class FloorGeometry:
                 f"Cannot adopt {point} to any known transition. Please check configuration"
             )
         return p
+
+    def _isWallOnPath(self, a: Point, b: Point) -> bool:
+        # https://bryceboe.com/2006/10/23/line-segment-intersection-algorithm/
+        def _ccw(A, B, C):
+            return (C.y - A.y) * (B.x - A.x) > (B.y - A.y) * (C.x - A.x)
+
+        def _intersect(A, B, C, D):
+            return _ccw(A, C, D) != _ccw(B, C, D) and _ccw(A, B, C) != _ccw(A, B, D)
+
+        for c in self.cells:
+            for i in range(len(c.points)):
+                if _intersect(a, b, c.points[i], c.points[(i + 1) % len(c.points)]):
+                    return True
+        return False
