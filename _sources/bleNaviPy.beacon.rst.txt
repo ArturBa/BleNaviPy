@@ -8,6 +8,7 @@ Submodules
    :maxdepth: 4
 
    bleNaviPy.beacon.beacon
+   bleNaviPy.beacon.user
 
 Module contents
 ---------------
