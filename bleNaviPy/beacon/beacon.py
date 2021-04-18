@@ -43,7 +43,7 @@ class Beacon:
     """
 
     beaconType = {
-        "generic": BeaconType(-80, 2, 3),
+        BeaconTypeEnum.GENERIC.value: BeaconType(-80, 2, 3),
     }
 
     def __init__(
