@@ -88,7 +88,7 @@ class Beacon:
             )
         else:
             signal_strength: float = -10 * self.N * math.log10(distance) + self.RSSI_1
-        logging.debug(f"{self} for {location} RSSI: {round(signal_strength, 2)}")
+        logging.debug(f"{self} for {location} RSSI: {signal_strength:4.2f}")
         return signal_strength
 
     def getDistanceByRSSI(self, rssi: float, scale: float = 1) -> float:
@@ -103,6 +103,6 @@ class Beacon:
         """
         distance: float = 10 ** ((self.RSSI_1 - rssi) / 10.0 / self.N) * 1 / scale
         logging.debug(
-            f"{self} for {round(rssi, 2)} Distance: {round(distance, 2)} on scale {scale}"
+            f"{self} for {rssi:4.2f} Distance: {distance:4.2f} on scale {scale}"
         )
         return distance

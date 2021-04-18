@@ -133,9 +133,9 @@ class FloorGeometry:
                 wall = self._isWallOnPath(user.location, b.location)
             rssi: float = b.getRSSI(user.location, self.scale, wall)
             logging.debug(
-                f"Checking {b}; RSSI: {round(rssi, 2):6}, "
+                f"Checking {b}; RSSI: {rssi:6.2f}, "
                 + f"is available: {rssi>=user.minRSSI!s:>5}, "
-                + f"distance: {round(b.location.distance(user.location, self.scale), 2):4} "
+                + f"distance: {b.location.distance(user.location, self.scale):4.2f} "
                 + f"with wall: {self.wall_detection}"
             )
             if rssi >= user.minRSSI:
