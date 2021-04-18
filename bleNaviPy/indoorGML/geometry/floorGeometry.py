@@ -8,6 +8,7 @@ import numpy as np
 from scipy.optimize import minimize
 
 from bleNaviPy.beacon.beacon import Beacon
+from bleNaviPy.beacon.user import User
 from bleNaviPy.indoorGML.geometry.cellGeometry import CellGeometry
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
@@ -35,7 +36,7 @@ class FloorGeometry:
         self.cells: List[CellGeometry] = cells
         self.transitions: List[TransitionGeometry] = transitions
         self.beacons: List[Beacon] = [] if beacons is None else beacons
-        self.users: List[Point] = []
+        self.users: List[User] = []
         self.scale = 1
 
     def __str__(self) -> str:
@@ -48,6 +49,14 @@ class FloorGeometry:
             scale (float): Scale factor
         """
         self.scale = scale
+
+    def addUser(self, user: User) -> None:
+        """Add user to a floor
+
+        Args:
+            user (User): User to add
+        """
+        self.users.append(user)
 
     def getUserLocation(
         self, user_id: int = 0, get_on_transition: bool = False
@@ -67,15 +76,14 @@ class FloorGeometry:
 
         return self._getPointOnClosestTransition(location)
 
-    def _gpsSolve(self, user_location: Point) -> Point:
-        def error(x, c, r):
+    def _gpsSolve(self, user: User) -> Point:
+        def _error(x, c, r):
             return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(len(c))])
 
-        centers: List[Point] = [b.location for b in self.beacons]
-        distances: List[float] = [
-            b.getDistanceByRSSI(b.getRSSI(user_location, self.scale), self.scale)
-            for b in self.beacons
-        ]
+        [centers, distances] = self._getCentersAndDistances(user)
+
+        if not self._isEnoughBeacons(centers):
+            return Point(0, 0)
 
         length = len(centers)
         distances_sum = sum(distances)
@@ -94,9 +102,38 @@ class FloorGeometry:
             centers_f.append([c.x, c.y])
         # optimize distance from signal origin to border of spheres
         found_location = minimize(
-            error, np.array(x0), args=(centers_f, distances), method="Nelder-Mead"
+            _error, np.array(x0), args=(centers_f, distances), method="Nelder-Mead"
         ).x
         return Point(found_location[0], found_location[1])
+
+    def _getCentersAndDistances(self, user: User) -> [List[Point], Point[float]]:
+        centers: List[Point] = []
+        distances: List[float] = []
+        for b in self.beacons:
+            rssi: float = b.getRSSI(user.location, self.scale)
+            logging.debug(
+                f"Checking {b}; RSSI: {round(rssi, 2)}, "
+                + f"is available: {rssi>=user.minRSSI!s:>5}, "
+                + f"distance: {round(b.location.distance(user.location, self.scale), 2)}"
+            )
+            if rssi >= user.minRSSI:
+                centers.append(b.location)
+                distances.append(b.getDistanceByRSSI(rssi, self.scale))
+        return [centers, distances]
+
+    def _isEnoughBeacons(self, centers: List[Point]) -> bool:
+        if len(centers) == 1:
+            logging.warning(
+                f"Using {len(centers)} for location estimation."
+                + "Cannot estimate user location."
+            )
+            return False
+        elif len(centers) == 2:
+            logging.warning(
+                f"Using {len(centers)} for location estimation."
+                + "This estimate will be uncertain."
+            )
+        return True
 
     def _getPointOnClosestTransition(self, point: Point) -> Point:
         distance = float("inf")
