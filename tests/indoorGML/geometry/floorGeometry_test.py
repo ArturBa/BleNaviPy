@@ -60,6 +60,11 @@ class FloorGeometryTest(unittest.TestCase):
         self.floor.setWallDetection(True)
         self.assertTrue(self.floor.wall_detection)
 
+    def testSetNoise(self):
+        self.assertFalse(self.floor.noise)
+        self.floor.setNoise(True)
+        self.assertTrue(self.floor.noise)
+
     def testUserLocation(self):
         location = self.floor.getUserLocation()
         self.assertAlmostEqual(0.2, location.x, places=4)

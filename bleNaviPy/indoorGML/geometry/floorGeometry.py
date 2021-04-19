@@ -39,6 +39,7 @@ class FloorGeometry:
         self.users: List[User] = []
         self.scale = 1
         self.wall_detection = False
+        self.noise = False
 
     def __str__(self) -> str:
         return f"Floor. Cells: {len(self.cells)}"
@@ -56,10 +57,20 @@ class FloorGeometry:
 
         Args:
             wall_detection (bool, optional):
-             Should floor detect walls then checking RSSI for beacons.
+             Should floor detect walls when checking RSSI for beacons.
              Defaults to True.
         """
         self.wall_detection = wall_detection
+
+    def setNoise(self, noise: bool = True) -> None:
+        """Set if floor should add noise to a simulation
+
+        Args:
+            noise (bool, optional):
+             Should floor add noise when checking RSSI for beacons.
+             Defaults to True.
+        """
+        self.noise = noise
 
     def addUser(self, user: User) -> None:
         """Add user to a floor
@@ -138,12 +149,13 @@ class FloorGeometry:
             wall = False
             if self.wall_detection:
                 wall = self._isWallOnPath(user.location, b.location)
-            rssi: float = b.getRSSI(user.location, self.scale, wall)
+            rssi: float = b.getRSSI(user.location, self.scale, wall, self.noise)
             logging.debug(
                 f"Checking {b}; RSSI: {rssi:6.2f}, "
                 + f"is available: {rssi>=user.minRSSI!s:>5}, "
                 + f"distance: {b.location.distance(user.location, self.scale):4.2f} "
-                + f"with wall: {self.wall_detection}"
+                + f"with wall: {self.wall_detection!s:>5} "
+                + f"with noise: {self.noise!s:>5} "
             )
             if rssi >= user.minRSSI:
                 centers.append(b.location)
