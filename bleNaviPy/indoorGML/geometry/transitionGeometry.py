@@ -127,3 +127,6 @@ class TransitionGeometry:
             point, self.segments[closest_segment]
         )
         return closest_point
+
+    def getDict(self) -> dict:
+        return {"points": [p.getDict() for p in self.points]}

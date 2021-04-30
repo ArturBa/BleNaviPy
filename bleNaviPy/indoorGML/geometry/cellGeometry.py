@@ -80,6 +80,15 @@ class CellGeometry:
             s += f"[{point.x}, {point.y}]"
         return f"Cell: {self.name} Points: " + s
 
+    def getDict(self) -> dict:
+        return {"id": self.id, "points": [p.getDict() for p in self.points]}
+
+    def getPropertiesDict(self) -> dict:
+        return {"id": self.id, "name": self.name}
+
+    def getHolesDict(self) -> dict:
+        return {"holeOf": self.id, "points": [p.getDict() for p in self.holes]}
+
 
 def isPointInsidePolynomial(polynomial: List[Point], point: Point) -> bool:
     """Check if point is inside a polynomial

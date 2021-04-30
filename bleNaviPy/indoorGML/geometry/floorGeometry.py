@@ -12,6 +12,7 @@ from bleNaviPy.beacon.user import User
 from bleNaviPy.indoorGML.geometry.cellGeometry import CellGeometry
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
+from bleNaviPy.indoorGML.parserJSONKeys import ParserJsonKeys
 
 
 class FloorGeometry:
@@ -79,6 +80,9 @@ class FloorGeometry:
             user (User): User to add
         """
         self.users.append(user)
+
+    def addBeacon(self, beacon: Beacon) -> None:
+        self.beacons.append(beacon)
 
     def getUserLocation(
         self, user_id: int = 0, get_on_transition: bool = False
@@ -206,3 +210,26 @@ class FloorGeometry:
                 if _intersect(a, b, c.points[i], c.points[(i + 1) % len(c.points)]):
                     return True
         return False
+
+    def getDict(self) -> dict:
+        return {
+            ParserJsonKeys.geometry_container.value: {
+                ParserJsonKeys.cell_geometry.value: [
+                    cell.getDict() for cell in self.cells
+                ],
+                ParserJsonKeys.transition_geometry.value: [
+                    transition.getDict() for transition in self.transitions
+                ],
+                ParserJsonKeys.hole_geometry.value: [
+                    cell.getHolesDict() for cell in self.cells
+                ],
+                ParserJsonKeys.beacon_geometry.value: [
+                    beacon.getDict() for beacon in self.beacons
+                ],
+            },
+            ParserJsonKeys.property_container.value: {
+                ParserJsonKeys.cell_properties.value: [
+                    cell.getPropertiesDict() for cell in self.cells
+                ],
+            },
+        }

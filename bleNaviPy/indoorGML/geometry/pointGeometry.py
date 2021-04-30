@@ -74,3 +74,6 @@ class Point:
         self.x -= point.x
         self.y -= point.y
         return self
+
+    def getDict(self) -> dict:
+        return {"point": {"x": self.x, "y": self.y}}

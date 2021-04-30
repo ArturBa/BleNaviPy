@@ -116,3 +116,12 @@ class Beacon:
             f"{self} for {rssi:4.2f} Distance: {distance:4.2f} on scale {scale}"
         )
         return distance
+
+    def getDict(self) -> dict:
+        return {
+            "points": self.location.getDict(),
+            "rssi_1": self.RSSI_1,
+            "n": self.N,
+            "n_wall": self.N_wall,
+            "noise": self.noise_var,
+        }

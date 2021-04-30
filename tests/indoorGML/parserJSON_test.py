@@ -90,8 +90,8 @@ class LocationTest(unittest.TestCase):
         self.assertEqual(2, len(l_cell_geom))
 
     def testCellName(self):
-        cell_properties = self.projectData[ParserJSON._property_container][
-            ParserJSON._cell_properties
+        cell_properties = self.projectData[ParserJSON.property_container][
+            ParserJSON.cell_properties
         ]
         self.assertEqual("name001", ParserJSON.getCellName("001", cell_properties))
 
