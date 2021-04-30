@@ -1,4 +1,4 @@
-"""This is a module for parcing indoorGML json files"""
+"""This is a module for parcing indoorGML and BleNavi json files"""
 from __future__ import annotations
 
 import json
@@ -58,6 +58,19 @@ class ParserJSON:
 
     @staticmethod
     def getGeometryFromBleNaviFile(filename: string) -> FloorGeometry:
+        """Get floor geometry using BleNaviFile
+
+        Args:
+            filename (string): Filename of saved floor geometry
+
+        Returns:
+            FloorGeometry: [Floor geometry saved in a file]
+        Examples:
+            >>> from bleNaviPy.indoorGML.parserJSON import ParserJSON
+            >>> from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
+            >>> floor: FloorGeometry = ParserJSON.getGeometryFromBleNaviFile("test.json")
+            Floor: Cells: 3
+        """
         with ParserJSON.opened(filename) as (f, err):
             if err:
                 logging.error(f"File {filename} open error. Please check the path")
@@ -81,6 +94,16 @@ class ParserJSON:
     def saveFloorGeometry(
         filename: string, floor_geometry: FloorGeometry, indent: number = 4
     ) -> None:
+        """Save floor geometry to BleNaviFile
+
+        Args:
+            filename (string): Save filename
+            floor_geometry (FloorGeometry): Floor geometry to save
+            indent (number, optional):
+                Indent passed to `json.dump` function.
+                If you want to keep the file oneline pass here `None`
+                Defaults to 4.
+        """
         with ParserJSON.opened(filename, "w") as (f, err):
             if err:
                 logging.error(f"File {filename} open error. Please check the path")
@@ -91,7 +114,19 @@ class ParserJSON:
 
     @staticmethod
     @contextmanager
-    def opened(filename: string, mode: string = "r") -> (TextIOWrapper, IOError):
+    def opened(filename: string, mode: string = "r") -> List[TextIOWrapper, IOError]:
+        """Open file context
+
+        Args:
+            filename (string): File path
+            mode (string, optional): Open mode. Passed into `open` function. Defaults to "r".
+
+        Returns:
+            List[TextIOWrapper, IOError]: Return a opened file or an error
+
+        Yields:
+            Iterator[List[TextIOWrapper, IOError]]:
+        """
         try:
             f = open(filename, mode)
         except IOError as err:
@@ -257,6 +292,12 @@ class ParserJSON:
 
     @staticmethod
     def setFloorProperties(project_data: any, floor: FloorGeometry) -> None:
+        """Set floor set floor properties into project data file
+
+        Args:
+            project_data (any): project data
+            floor (FloorGeometry):
+        """
         floor_properties = project_data[ParserJsonKeys.property_container.value][
             ParserJsonKeys.floor_properties.value
         ][0]

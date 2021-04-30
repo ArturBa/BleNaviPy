@@ -1,9 +1,12 @@
+"""This is a module for keeping shared json keys"""
 from enum import Enum
 from enum import unique
 
 
 @unique
 class ParserJsonKeys(Enum):
+    """Json keys enum"""
+
     geometry_container = "geometryContainer"
     cell_geometry = "cellGeometry"
     transition_geometry = "transitionGeometry"

@@ -81,12 +81,27 @@ class CellGeometry:
         return f"Cell: {self.name} Points: " + s
 
     def getDict(self) -> dict:
+        """Get save ready cell geometry dictionary
+
+        Returns:
+            dict: save ready cell geometry dictionary
+        """
         return {"id": self.id, "points": [p.getDict() for p in self.points]}
 
     def getPropertiesDict(self) -> dict:
+        """Get save ready cell properties dictionary
+
+        Returns:
+            dict: save ready cell properties dictionary
+        """
         return {"id": self.id, "name": self.name}
 
     def getHolesDict(self) -> dict:
+        """Get save ready holes of the cell geometry dictionary
+
+        Returns:
+            dict: save ready holes of the cell geometry dictionary
+        """
         return {"holeOf": self.id, "points": [p.getDict() for p in self.holes]}
 
 

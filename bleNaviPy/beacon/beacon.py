@@ -118,6 +118,11 @@ class Beacon:
         return distance
 
     def getDict(self) -> dict:
+        """Get save ready beacon dictionary
+
+        Returns:
+            dict: save ready beacon dictionary
+        """
         return {
             "points": self.location.getDict(),
             "rssi_1": self.rssi_1,

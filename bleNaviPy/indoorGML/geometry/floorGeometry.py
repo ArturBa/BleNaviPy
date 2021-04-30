@@ -82,6 +82,11 @@ class FloorGeometry:
         self.users.append(user)
 
     def addBeacon(self, beacon: Beacon) -> None:
+        """Add a beacon to a floor
+
+        Args:
+            beacon (Beacon): Beacon to add
+        """
         self.beacons.append(beacon)
 
     def getUserLocation(
@@ -212,6 +217,11 @@ class FloorGeometry:
         return False
 
     def getPropertiesDict(self) -> dict:
+        """Get properties part of floor geometry dictionary
+
+        Returns:
+            dict: properties part of floor geometry dictionary
+        """
         return {
             "scale": self.scale,
             "wall_detection": self.wall_detection,
@@ -219,6 +229,11 @@ class FloorGeometry:
         }
 
     def getDict(self) -> dict:
+        """Get dictionary form of floor ready for a saving
+
+        Returns:
+            dict: Save ready dict form of floor
+        """
         return {
             ParserJsonKeys.geometry_container.value: {
                 ParserJsonKeys.cell_geometry.value: [
