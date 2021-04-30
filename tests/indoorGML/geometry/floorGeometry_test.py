@@ -137,15 +137,22 @@ class FloorGeometryTest(unittest.TestCase):
         self.floor.addBeacon(Beacon(Point(0, 0)))
         self.assertEqual(init_beacons_len + 1, len(self.floor.beacons))
 
-    def testDict(self):
-        floor_dict = {
+    def testPropertiesDict(self):
+        floor_prop_dict = {
             "scale": 1,
             "wall_detection": False,
             "noise": False,
+        }
+
+        self.assertDictEqual(floor_prop_dict, self.floor.getPropertiesDict())
+
+    def testDict(self):
+        floor_dict = {
             ParserJsonKeys.property_container.value: {
                 ParserJsonKeys.cell_properties.value: [
                     c.getPropertiesDict() for c in self.floor.cells
-                ]
+                ],
+                ParserJsonKeys.floor_properties.value: [self.floor.getPropertiesDict()],
             },
             ParserJsonKeys.geometry_container.value: {
                 ParserJsonKeys.cell_geometry.value: [

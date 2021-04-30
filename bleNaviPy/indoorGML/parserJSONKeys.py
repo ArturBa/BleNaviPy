@@ -9,5 +9,7 @@ class ParserJsonKeys(Enum):
     transition_geometry = "transitionGeometry"
     hole_geometry = "holeGeometry"
     beacon_geometry = "beaconGeometry"
+
     property_container = "propertyContainer"
     cell_properties = "cellProperties"
+    floor_properties = "floorProperties"

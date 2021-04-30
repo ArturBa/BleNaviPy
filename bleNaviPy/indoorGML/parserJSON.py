@@ -74,9 +74,7 @@ class ParserJSON:
                 ParserJSON.getTransitionGeometries(project_data),
                 ParserJSON.getBeaconGeometries(project_data),
             )
-            floor_geometry.setScale(project_data["scale"])
-            floor_geometry.setWallDetection(project_data["wall_detection"])
-            floor_geometry.setNoise(project_data["noise"])
+            ParserJSON.setFloorProperties(project_data, floor_geometry)
             return floor_geometry
 
     @staticmethod
@@ -246,12 +244,23 @@ class ParserJSON:
             ]
         )
         for beacon in beacon_geometry:
-            x = beacon["location"]["x"]
-            y = beacon["location"]["y"]
-            beacon_location = Point(x, y)
+            for points in beacon["points"]:
+                x = points["point"]["x"]
+                y = points["point"]["y"]
+                beacon_location = Point(x, y)
             beacon_type = BeaconType(
                 beacon["rssi_1"], beacon["n"], beacon["n_wall"], beacon["noise_var"]
             )
             beacon_geometries.append(Beacon(beacon_location, beacon_type))
 
         return beacon_geometries
+
+    @staticmethod
+    def setFloorProperties(project_data: any, floor: FloorGeometry) -> None:
+        floor_properties = project_data[ParserJsonKeys.property_container.value][
+            ParserJsonKeys.floor_properties.value
+        ][0]
+        print(floor_properties)
+        floor.setScale(floor_properties["scale"])
+        floor.setWallDetection(floor_properties["wall_detection"])
+        floor.setNoise(floor_properties["noise"])

@@ -1,5 +1,6 @@
 import logging
 import unittest
+from pathlib import Path
 
 import pytest
 
@@ -9,7 +10,8 @@ from bleNaviPy.indoorGML.parserJSONKeys import ParserJsonKeys
 
 
 class LocationTest(unittest.TestCase):
-    filename: str = "tests/indoorGML/parserTest.json"
+    indoor_gml_filename: str = "tests/indoorGML/indoor_gml.json"
+    ble_navi_filename: str = "tests/indoorGML/ble_navi.json"
     projectData = {
         "geometryContainer": {
             "cellGeometry": [
@@ -60,16 +62,30 @@ class LocationTest(unittest.TestCase):
                     ],
                 }
             ],
+            "beaconGeometry": [
+                {
+                    "rssi_1": 70,
+                    "n": 2,
+                    "n_wall": 7,
+                    "noise_var": 7,
+                    "points": [{"point": {"x": 1, "y": 1}}],
+                }
+            ],
         },
-        "propertyContainer": {"cellProperties": [{"id": "001", "name": "name001"}]},
+        "propertyContainer": {
+            "cellProperties": [{"id": "001", "name": "name001"}],
+            "floorProperties": [{"scale": 1, "noise": False, "wall_detection": False}],
+        },
     }
 
     @pytest.fixture(autouse=True)
     def inject_fixtures(self, caplog):
         self._caplog = caplog
 
-    def testGetGeometryFromFile(self):
-        floor: FloorGeometry = ParserJSON.getGeometryFromIndoorGMLFile(self.filename)
+    def testGetGeometryFromGMLFile(self):
+        floor: FloorGeometry = ParserJSON.getGeometryFromIndoorGMLFile(
+            self.indoor_gml_filename
+        )
         self.assertEqual(5, len(floor.cells))
 
     def testGetGeometryFromFileFailure(self):
@@ -81,6 +97,40 @@ class LocationTest(unittest.TestCase):
                 in self._caplog.text
             )
             self.assertEqual(0, len(floor.cells))
+
+    def testGetGeometryFromBleNaviFileFile(self):
+        floor: FloorGeometry = ParserJSON.getGeometryFromBleNaviFile(
+            self.ble_navi_filename
+        )
+        self.assertEqual(1, len(floor.beacons))
+        self.assertEqual(1, floor.scale)
+
+    def testGetGeometryFromBleNaviFileFailure(self):
+        fake_path: str = "tests/indoorGML/nonExisting.json"
+        with self._caplog.at_level(logging.INFO):
+            floor: FloorGeometry = ParserJSON.getGeometryFromBleNaviFile(fake_path)
+            assert (
+                f"File {fake_path} open error. Please check the path"
+                in self._caplog.text
+            )
+            self.assertEqual(0, len(floor.cells))
+
+    def testSaveFile(self):
+        floor = FloorGeometry([], [])
+        save_filepath = "test_file.json"
+        ParserJSON.saveFloorGeometry(save_filepath, floor, None)
+        path = Path(save_filepath)
+        assert path.is_file()
+
+    def testSaveFileFailure(self):
+        floor = FloorGeometry([], [])
+        save_filepath = "ignore21/save_file.json"
+        with self._caplog.at_level(logging.INFO):
+            ParserJSON.saveFloorGeometry(save_filepath, floor, None)
+            assert (
+                f"File {save_filepath} open error. Please check the path"
+                in self._caplog.text
+            )
 
     def testGetProjectData(self):
         value = {"test": {"1": 1}}
@@ -111,6 +161,12 @@ class LocationTest(unittest.TestCase):
         holes_geom = ParserJSON.getHolesGeometries(self.projectData)
         ParserJSON.addHolesToCells(cell_geom, holes_geom)
         self.assertEqual(1, len(cell_geom[0].holes))
+
+    def testBeaconsGeometries(self):
+        beacons = ParserJSON.getBeaconGeometries(self.projectData)
+        self.assertEqual(beacons[0].location.x, 1)
+        self.assertEqual(beacons[0].location.y, 1)
+        self.assertEqual(1, len(beacons))
 
 
 if __name__ == "__main__":

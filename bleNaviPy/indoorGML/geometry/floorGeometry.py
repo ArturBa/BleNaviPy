@@ -211,11 +211,15 @@ class FloorGeometry:
                     return True
         return False
 
-    def getDict(self) -> dict:
+    def getPropertiesDict(self) -> dict:
         return {
             "scale": self.scale,
             "wall_detection": self.wall_detection,
             "noise": self.noise,
+        }
+
+    def getDict(self) -> dict:
+        return {
             ParserJsonKeys.geometry_container.value: {
                 ParserJsonKeys.cell_geometry.value: [
                     cell.getDict() for cell in self.cells
@@ -234,5 +238,6 @@ class FloorGeometry:
                 ParserJsonKeys.cell_properties.value: [
                     cell.getPropertiesDict() for cell in self.cells
                 ],
+                ParserJsonKeys.floor_properties.value: [self.getPropertiesDict()],
             },
         }
