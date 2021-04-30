@@ -123,7 +123,8 @@ class ParserJSON:
             project_data (any): Project json data
 
         Returns:
-            List[TransitionGeometry]: List of transitions geometries from the project file
+            List[TransitionGeometry]:
+             List of transitions geometries from the project file
         """
         transition_geometries: List[TransitionGeometry] = []
         transition_geometry = list(

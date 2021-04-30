@@ -1,11 +1,14 @@
 """This is a module for beacon geometry"""
 from __future__ import annotations
 
+import copy
 import logging
 import math
 from enum import Enum
 from enum import unique
 from typing import Union
+
+import numpy as np
 
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 
@@ -24,14 +27,18 @@ class BeaconTypeEnum(Enum):
 class BeaconType:
     """Beacon type with default data"""
 
-    def __init__(self, rssi_1: int, n: float):
+    def __init__(self, rssi_1: int, n: float, n_wall: float, noise_var: float) -> None:
         """
         Args:
             rssi_1 (int): Value of rssi in 1m distance
-            n (float): Medium resistance factor
+            n (float): Path loss exponent for building
+            n_wall (float): Path loss exponent for obstructed in building
+            noise_var (float): Variance of a singal noise
         """
         self.RSSI_1 = rssi_1
         self.N = n
+        self.N_wall = n_wall
+        self.noise_var = noise_var
 
 
 class Beacon:
@@ -41,7 +48,7 @@ class Beacon:
     """
 
     beaconType = {
-        "generic": BeaconType(-80, 2),
+        BeaconTypeEnum.GENERIC.value: BeaconType(-80, 2, 5, 7.5),
     }
 
     def __init__(
@@ -58,26 +65,40 @@ class Beacon:
             beacon_type = self.beaconType.get(beacon_type.value)
 
         self.location = location
-        self.RSSI_1 = beacon_type.RSSI_1
-        self.N = beacon_type.N
+        for k, v in beacon_type.__dict__.items():
+            self.__dict__[k] = copy.deepcopy(v)
 
     def __str__(self):
         return f"Beacon: [{self.location}]"
 
-    def getRSSI(self, location: Point, scale: float = 1) -> float:
+    def getRSSI(
+        self,
+        location: Point,
+        scale: float = 1,
+        is_wall: bool = False,
+        noise: bool = False,
+    ) -> float:
         """Calculate RSSI on given location
 
         Args:
             location (Location):
             scale (float, optional): Floor scale. Defaults to 1.
+            is_wall (bool, optional): Is wall on a way. Defaults to False.
+            noise (bool, optional): Should noise be added to a signal. Defaults to False.
 
         Returns:
             float: RSSI in dB
         """
         # Distance = 10 ^ ((Measured Power — RSSI) / (10 * N))
         distance = location.distance(self.location, scale)
-        signal_strength: float = -10 * self.N * math.log10(distance) + self.RSSI_1
-        logging.debug(f"{self} for {location} RSSI: {signal_strength}")
+        if is_wall:
+            n = self.N_wall
+        else:
+            n = self.N
+        signal_strength: float = -10 * n * math.log10(distance) + self.RSSI_1
+        if noise:
+            signal_strength += np.random.normal(0, self.noise_var)
+        logging.debug(f"{self} for {location} RSSI: {signal_strength:4.2f}")
         return signal_strength
 
     def getDistanceByRSSI(self, rssi: float, scale: float = 1) -> float:
@@ -91,5 +112,7 @@ class Beacon:
             float: Distance from beacon using a map units
         """
         distance: float = 10 ** ((self.RSSI_1 - rssi) / 10.0 / self.N) * 1 / scale
-        logging.debug(f"{self} for {rssi} Distance: {distance} on scale {scale}")
+        logging.debug(
+            f"{self} for {rssi:4.2f} Distance: {distance:4.2f} on scale {scale}"
+        )
         return distance
