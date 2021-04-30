@@ -7,7 +7,10 @@ from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
 
 class LocationTest(unittest.TestCase):
     transitionPoints = [Point(0, 0), Point(1, 0), Point(1, -1)]
-    transitionGeometry = TransitionGeometry(transitionPoints)
+    transitionGeometry: TransitionGeometry
+
+    def setUp(self):
+        self.transitionGeometry = TransitionGeometry(self.transitionPoints)
 
     def testInit(self):
         self.assertEqual(self.transitionPoints, self.transitionGeometry.points)
@@ -74,6 +77,10 @@ class LocationTest(unittest.TestCase):
         self.assertEqual(
             closes_point, self.transitionGeometry.getClosestPoint(test_point)
         )
+
+    def testDict(self):
+        transition_dict = {"points": [p.getDict() for p in self.transitionPoints]}
+        self.assertDictEqual(transition_dict, self.transitionGeometry.getDict())
 
 
 if __name__ == "__main__":

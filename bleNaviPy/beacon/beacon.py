@@ -35,9 +35,9 @@ class BeaconType:
             n_wall (float): Path loss exponent for obstructed in building
             noise_var (float): Variance of a singal noise
         """
-        self.RSSI_1 = rssi_1
-        self.N = n
-        self.N_wall = n_wall
+        self.rssi_1 = rssi_1
+        self.n = n
+        self.n_wall = n_wall
         self.noise_var = noise_var
 
 
@@ -48,7 +48,7 @@ class Beacon:
     """
 
     beaconType = {
-        BeaconTypeEnum.GENERIC.value: BeaconType(-80, 2, 5, 7.5),
+        BeaconTypeEnum.GENERIC: BeaconType(-80, 2, 5, 7.5),
     }
 
     def __init__(
@@ -62,7 +62,7 @@ class Beacon:
             location (Point): Location of the beacon
         """
         if isinstance(beacon_type, BeaconTypeEnum):
-            beacon_type = self.beaconType.get(beacon_type.value)
+            beacon_type = self.beaconType.get(beacon_type)
 
         self.location = location
         for k, v in beacon_type.__dict__.items():
@@ -92,10 +92,10 @@ class Beacon:
         # Distance = 10 ^ ((Measured Power — RSSI) / (10 * N))
         distance = location.distance(self.location, scale)
         if is_wall:
-            n = self.N_wall
+            n = self.n_wall
         else:
-            n = self.N
-        signal_strength: float = -10 * n * math.log10(distance) + self.RSSI_1
+            n = self.n
+        signal_strength: float = -10 * n * math.log10(distance) + self.rssi_1
         if noise:
             signal_strength += np.random.normal(0, self.noise_var)
         logging.debug(f"{self} for {location} RSSI: {signal_strength:4.2f}")
@@ -111,7 +111,7 @@ class Beacon:
         Returns:
             float: Distance from beacon using a map units
         """
-        distance: float = 10 ** ((self.RSSI_1 - rssi) / 10.0 / self.N) * 1 / scale
+        distance: float = 10 ** ((self.rssi_1 - rssi) / 10.0 / self.n) * 1 / scale
         logging.debug(
             f"{self} for {rssi:4.2f} Distance: {distance:4.2f} on scale {scale}"
         )
@@ -120,8 +120,8 @@ class Beacon:
     def getDict(self) -> dict:
         return {
             "points": self.location.getDict(),
-            "rssi_1": self.RSSI_1,
-            "n": self.N,
-            "n_wall": self.N_wall,
-            "noise": self.noise_var,
+            "rssi_1": self.rssi_1,
+            "n": self.n,
+            "n_wall": self.n_wall,
+            "noise_var": self.noise_var,
         }

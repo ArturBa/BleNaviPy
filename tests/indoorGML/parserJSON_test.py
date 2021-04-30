@@ -5,6 +5,7 @@ import pytest
 
 from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
 from bleNaviPy.indoorGML.parserJSON import ParserJSON
+from bleNaviPy.indoorGML.parserJSONKeys import ParserJsonKeys
 
 
 class LocationTest(unittest.TestCase):
@@ -90,8 +91,8 @@ class LocationTest(unittest.TestCase):
         self.assertEqual(2, len(l_cell_geom))
 
     def testCellName(self):
-        cell_properties = self.projectData[ParserJSON.property_container][
-            ParserJSON.cell_properties
+        cell_properties = self.projectData[ParserJsonKeys.property_container.value][
+            ParserJsonKeys.cell_properties.value
         ]
         self.assertEqual("name001", ParserJSON.getCellName("001", cell_properties))
 

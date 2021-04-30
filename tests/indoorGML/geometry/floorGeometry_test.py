@@ -9,6 +9,7 @@ from bleNaviPy.indoorGML.geometry.cellGeometry import CellGeometry
 from bleNaviPy.indoorGML.geometry.floorGeometry import FloorGeometry
 from bleNaviPy.indoorGML.geometry.pointGeometry import Point
 from bleNaviPy.indoorGML.geometry.transitionGeometry import TransitionGeometry
+from bleNaviPy.indoorGML.parserJSONKeys import ParserJsonKeys
 
 LOGGER = logging.getLogger(__name__)
 
@@ -21,6 +22,7 @@ class FloorGeometryTest(unittest.TestCase):
     cellName = "cellName"
     cellPoints = [Point(0, 0), Point(0, 1), Point(1, 1), Point(1, 0)]
     cellGeometry = [CellGeometry("C1", cellName, cellPoints)]
+    beaconPoints = [Point(0, 0), Point(0, 2), Point(2, 0), Point(2, 2)]
 
     transitionPoints = [Point(0.1, 0.1), Point(0.5, 0.5)]
     transitionGeometry = [TransitionGeometry(transitionPoints)]
@@ -36,10 +38,8 @@ class FloorGeometryTest(unittest.TestCase):
 
     def setUp(self):
         self.floor = FloorGeometry(self.cellGeometry, self.transitionGeometry)
-        self.floor.beacons.append(Beacon(Point(2, 2)))
-        self.floor.beacons.append(Beacon(Point(0, 0)))
-        self.floor.beacons.append(Beacon(Point(0, 2)))
-        self.floor.beacons.append(Beacon(Point(2, 0)))
+        for p in self.beaconPoints:
+            self.floor.addBeacon(Beacon(p))
         self.floor.addUser(self.user)
 
     def testInit(self):
@@ -131,6 +131,39 @@ class FloorGeometryTest(unittest.TestCase):
         )
         self.assertTrue(floor._isWallOnPath(Point(0.5, 0.5), Point(1.5, 0.5)))
         self.assertFalse(floor._isWallOnPath(Point(0.5, 0.5), Point(0.7, 0.5)))
+
+    def testBeaconAdd(self):
+        init_beacons_len = len(self.floor.beacons)
+        self.floor.addBeacon(Beacon(Point(0, 0)))
+        self.assertEqual(init_beacons_len + 1, len(self.floor.beacons))
+
+    def testDict(self):
+        floor_dict = {
+            "scale": 1,
+            "wall_detection": False,
+            "noise": False,
+            ParserJsonKeys.property_container.value: {
+                ParserJsonKeys.cell_properties.value: [
+                    c.getPropertiesDict() for c in self.floor.cells
+                ]
+            },
+            ParserJsonKeys.geometry_container.value: {
+                ParserJsonKeys.cell_geometry.value: [
+                    c.getDict() for c in self.floor.cells
+                ],
+                ParserJsonKeys.transition_geometry.value: [
+                    t.getDict() for t in self.floor.transitions
+                ],
+                ParserJsonKeys.beacon_geometry.value: [
+                    b.getDict() for b in self.floor.beacons
+                ],
+                ParserJsonKeys.hole_geometry.value: [
+                    c.getHolesDict() for c in self.floor.cells
+                ],
+            },
+        }
+
+        self.assertDictEqual(floor_dict, self.floor.getDict())
 
 
 if __name__ == "__main__":
