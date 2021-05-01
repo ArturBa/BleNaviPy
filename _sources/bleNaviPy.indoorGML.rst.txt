@@ -16,6 +16,7 @@ Submodules
    :maxdepth: 4
 
    bleNaviPy.indoorGML.parserJSON
+   bleNaviPy.indoorGML.parserJSONKeys
 
 Module contents
 ---------------

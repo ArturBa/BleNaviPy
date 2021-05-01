@@ -32,7 +32,7 @@
             
   <div class="section" id="module-bleNaviPy.indoorGML.parserJSON">
 <span id="blenavipy-indoorgml-parserjson-module"></span><h1>bleNaviPy.indoorGML.parserJSON module<a class="headerlink" href="#module-bleNaviPy.indoorGML.parserJSON" title="Permalink to this headline">¶</a></h1>
-<p>This is a module for parcing indoorGML json files</p>
+<p>This is a module for parcing indoorGML and BleNavi json files</p>
 <dl class="py class">
 <dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">bleNaviPy.indoorGML.parserJSON.</span></code><code class="sig-name descname"><span class="pre">ParserJSON</span></code><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON" title="Permalink to this definition">¶</a></dt>
@@ -48,6 +48,23 @@
 <li><p><strong>cells</strong> (<em>List[CellGeometry]</em>)</p></li>
 <li><p><strong>holes</strong> (<em>List[HoleGeometry]</em>)</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getBeaconGeometries">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getBeaconGeometries</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="bleNaviPy.beacon.beacon.html#bleNaviPy.beacon.beacon.Beacon" title="bleNaviPy.beacon.beacon.Beacon"><span class="pre">bleNaviPy.beacon.beacon.Beacon</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getBeaconGeometries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get beacons from project file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>project_data</strong> (<em>any</em>) – Project json data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of beacons from the project file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="bleNaviPy.beacon.beacon.html#bleNaviPy.beacon.beacon.Beacon" title="bleNaviPy.beacon.beacon.Beacon">Beacon</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -87,6 +104,30 @@
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.getGeometryFromBleNaviFile">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">getGeometryFromBleNaviFile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">FloorGeometry</span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.getGeometryFromBleNaviFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get floor geometry using BleNaviFile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – Filename of saved floor geometry</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[Floor geometry saved in a file]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bleNaviPy.indoorGML.geometry.floorGeometry.html#bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry" title="bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry">FloorGeometry</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bleNaviPy.indoorGML.parserJSON</span> <span class="kn">import</span> <span class="n">ParserJSON</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bleNaviPy.indoorGML.geometry.floorGeometry</span> <span class="kn">import</span> <span class="n">FloorGeometry</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">floor</span><span class="p">:</span> <span class="n">FloorGeometry</span> <span class="o">=</span> <span class="n">ParserJSON</span><span class="o">.</span><span class="n">getGeometryFromBleNaviFile</span><span class="p">(</span><span class="s2">&quot;test.json&quot;</span><span class="p">)</span>
+<span class="go">Floor: Cells: 3</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -160,6 +201,60 @@
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>List[<a class="reference internal" href="bleNaviPy.indoorGML.geometry.transitionGeometry.html#bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry" title="bleNaviPy.indoorGML.geometry.transitionGeometry.TransitionGeometry">TransitionGeometry</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.opened">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">opened</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">string</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'r'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TextIOWrapper</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.9)"><span class="pre">IOError</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.opened" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open file context</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – File path</p></li>
+<li><p><strong>mode</strong> (<em>string, optional</em>) – Open mode. Passed into <cite>open</cite> function. Defaults to “r”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return a opened file or an error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[TextIOWrapper, <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.9)">IOError</a>]</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>Iterator[List[TextIOWrapper, IOError]]</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.saveFloorGeometry">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">saveFloorGeometry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floor_geometry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">FloorGeometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">number</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.saveFloorGeometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save floor geometry to BleNaviFile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – Save filename</p></li>
+<li><p><strong>floor_geometry</strong> (<em>FloorGeometry</em>) – Floor geometry to save</p></li>
+<li><p><strong>indent</strong> (<em>number, optional</em>) – Indent passed to <cite>json.dump</cite> function.
+If you want to keep the file oneline pass here <cite>None</cite>
+Defaults to 4.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bleNaviPy.indoorGML.parserJSON.ParserJSON.setFloorProperties">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">setFloorProperties</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="bleNaviPy.indoorGML.geometry.floorGeometry.html#bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry" title="bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry"><span class="pre">bleNaviPy.indoorGML.geometry.floorGeometry.FloorGeometry</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><a class="headerlink" href="#bleNaviPy.indoorGML.parserJSON.ParserJSON.setFloorProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set floor set floor properties into project data file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project_data</strong> (<em>any</em>) – project data</p></li>
+<li><p><strong>floor</strong> (<em>FloorGeometry</em>)</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
