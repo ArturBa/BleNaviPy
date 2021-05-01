@@ -1,0 +1,1328 @@
+{
+    "geometryContainer": {
+        "cellGeometry": [
+            {
+                "id": "C1",
+                "points": [
+                    {
+                        "uuid": "u9de90e8-3e1a-0e7c-3b3b-8e252aac3d11",
+                        "point": {
+                            "x": 160.5262059624776,
+                            "y": 19.633134838137355
+                        },
+                        "memberOf": { "C1": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "t50b154d-cf2b-0fe1-6edd-2a17f73d5e07",
+                        "point": {
+                            "x": 19.978152270439352,
+                            "y": 19.983628737618748
+                        },
+                        "memberOf": { "C1": "cell" }
+                    },
+                    {
+                        "uuid": "r8e1d58a-af1c-82bc-676d-1d71c58d12ee",
+                        "point": {
+                            "x": 20.328646169920745,
+                            "y": 119.8743900898155
+                        },
+                        "memberOf": { "C1": "cell", "C2": "cell" }
+                    },
+                    {
+                        "uuid": "lc12c830-ecc6-4100-099c-5effb4f73034",
+                        "point": {
+                            "x": 160.876699861959,
+                            "y": 119.8743900898155
+                        },
+                        "memberOf": { "C1": "cell", "C2": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "z6908020-f30f-5bc8-5a84-f0141e86a37c",
+                        "point": {
+                            "x": 160.66716281074025,
+                            "y": 59.94679344125488
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "ee42c1df-d279-29f1-9306-bb6a4747924b",
+                        "point": {
+                            "x": 160.63404892080305,
+                            "y": 50.476220919219
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell",
+                            "T1": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "w2f042d2-2d91-73ca-96a8-392f6a0dc53e",
+                        "point": {
+                            "x": 160.60218622857053,
+                            "y": 41.36349094071761
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell"
+                        }
+                    }
+                ],
+                "slant": null
+            },
+            {
+                "id": "C2",
+                "points": [
+                    {
+                        "uuid": "lc12c830-ecc6-4100-099c-5effb4f73034",
+                        "point": {
+                            "x": 160.876699861959,
+                            "y": 119.8743900898155
+                        },
+                        "memberOf": { "C1": "cell", "C2": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "r8e1d58a-af1c-82bc-676d-1d71c58d12ee",
+                        "point": {
+                            "x": 20.328646169920745,
+                            "y": 119.8743900898155
+                        },
+                        "memberOf": { "C1": "cell", "C2": "cell" }
+                    },
+                    {
+                        "uuid": "b7ad5c2e-dea6-4091-8c44-bb524251cf25",
+                        "point": {
+                            "x": 20.679140069402138,
+                            "y": 220.81663314045645
+                        },
+                        "memberOf": { "C2": "cell" }
+                    },
+                    {
+                        "uuid": "m79fb882-4935-58d1-a1b2-a1ac15f28c98",
+                        "point": {
+                            "x": 160.5262059624776,
+                            "y": 220.11564534149366
+                        },
+                        "memberOf": { "C2": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "k18b0070-17fc-df15-0824-60bdc37af2ca",
+                        "point": {
+                            "x": 160.73088391028165,
+                            "y": 161.57775226953612
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "s8840ed3-040e-8df1-53d7-9ee664118380",
+                        "point": {
+                            "x": 160.76273803266687,
+                            "y": 152.4674732673603
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell",
+                            "T4": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "o2bf2a3e-6954-98bb-f195-8bb8602cfdcf",
+                        "point": {
+                            "x": 160.80439606035443,
+                            "y": 140.55327734872253
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell"
+                        }
+                    }
+                ],
+                "slant": null
+            },
+            {
+                "id": "C3",
+                "points": [
+                    {
+                        "uuid": "ed1dd771-a84d-20f3-0ede-da51447c84b1",
+                        "point": {
+                            "x": 220.46066277379566,
+                            "y": 120.2248839892969
+                        },
+                        "memberOf": { "C3": "cell", "C4": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "e4bc723b-f5de-1777-9da2-40442cc58742",
+                        "point": {
+                            "x": 340.3295763964318,
+                            "y": 119.8743900898155
+                        },
+                        "memberOf": { "C3": "cell", "C4": "cell" }
+                    },
+                    {
+                        "uuid": "v189e168-65ce-5b8b-8e15-2df007d2d17d",
+                        "point": {
+                            "x": 340.3295763964318,
+                            "y": 19.983628737618748
+                        },
+                        "memberOf": { "C3": "cell" }
+                    },
+                    {
+                        "uuid": "j4a4041a-6b74-e570-0157-3e46922ac79c",
+                        "point": {
+                            "x": 220.81115667327705,
+                            "y": 19.983628737618748
+                        },
+                        "memberOf": { "C3": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "e734f2f9-8db5-bd3f-e8fe-0368517eeb3f",
+                        "point": {
+                            "x": 220.74008264475893,
+                            "y": 40.31080089380522
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "b8930436-d108-d791-3ab4-48b03af330c6",
+                        "point": {
+                            "x": 220.7033137149516,
+                            "y": 50.826714818700395
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell",
+                            "T2": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "b93b1d01-4024-9693-9d6e-a426463e1376",
+                        "point": {
+                            "x": 220.66901290116442,
+                            "y": 60.63674756182892
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell"
+                        }
+                    }
+                ],
+                "slant": null
+            },
+            {
+                "id": "C4",
+                "points": [
+                    {
+                        "uuid": "e4bc723b-f5de-1777-9da2-40442cc58742",
+                        "point": {
+                            "x": 340.3295763964318,
+                            "y": 119.8743900898155
+                        },
+                        "memberOf": { "C3": "cell", "C4": "cell" }
+                    },
+                    {
+                        "uuid": "ed1dd771-a84d-20f3-0ede-da51447c84b1",
+                        "point": {
+                            "x": 220.46066277379566,
+                            "y": 120.2248839892969
+                        },
+                        "memberOf": { "C3": "cell", "C4": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "hd73b013-5c54-78fa-400a-49d3dc98a0fb",
+                        "point": {
+                            "x": 220.5307908960025,
+                            "y": 140.21139881824206
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "ea9e4d13-64e4-4946-4d4b-3a849be062fb",
+                        "point": {
+                            "x": 220.57256053807498,
+                            "y": 152.11574680890104
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell",
+                            "T5": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "l580f91a-7a49-42ee-ce0a-f88cc7b5928a",
+                        "point": {
+                            "x": 220.60090175802665,
+                            "y": 160.192994495125
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "db9cd7a1-123f-7f2f-551a-31e14c20e8c3",
+                        "point": {
+                            "x": 220.81115667327705,
+                            "y": 220.11564534149366
+                        },
+                        "memberOf": { "C4": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "q3dcf325-1506-a9ab-5f7a-d5e16512e016",
+                        "point": {
+                            "x": 341.03056419539456,
+                            "y": 220.46613924097505
+                        },
+                        "memberOf": { "C4": "cell" }
+                    }
+                ],
+                "slant": null
+            },
+            {
+                "id": "C5",
+                "points": [
+                    {
+                        "uuid": "u9de90e8-3e1a-0e7c-3b3b-8e252aac3d11",
+                        "point": {
+                            "x": 160.5262059624776,
+                            "y": 19.633134838137355
+                        },
+                        "memberOf": { "C1": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "w2f042d2-2d91-73ca-96a8-392f6a0dc53e",
+                        "point": {
+                            "x": 160.60218622857053,
+                            "y": 41.36349094071761
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "ee42c1df-d279-29f1-9306-bb6a4747924b",
+                        "point": {
+                            "x": 160.63404892080305,
+                            "y": 50.476220919219
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell",
+                            "T1": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "z6908020-f30f-5bc8-5a84-f0141e86a37c",
+                        "point": {
+                            "x": 160.66716281074025,
+                            "y": 59.94679344125488
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "lc12c830-ecc6-4100-099c-5effb4f73034",
+                        "point": {
+                            "x": 160.876699861959,
+                            "y": 119.8743900898155
+                        },
+                        "memberOf": { "C1": "cell", "C2": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "o2bf2a3e-6954-98bb-f195-8bb8602cfdcf",
+                        "point": {
+                            "x": 160.80439606035443,
+                            "y": 140.55327734872253
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "s8840ed3-040e-8df1-53d7-9ee664118380",
+                        "point": {
+                            "x": 160.76273803266687,
+                            "y": 152.4674732673603
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell",
+                            "T4": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "k18b0070-17fc-df15-0824-60bdc37af2ca",
+                        "point": {
+                            "x": 160.73088391028165,
+                            "y": 161.57775226953612
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "m79fb882-4935-58d1-a1b2-a1ac15f28c98",
+                        "point": {
+                            "x": 160.5262059624776,
+                            "y": 220.11564534149366
+                        },
+                        "memberOf": { "C2": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "db9cd7a1-123f-7f2f-551a-31e14c20e8c3",
+                        "point": {
+                            "x": 220.81115667327705,
+                            "y": 220.11564534149366
+                        },
+                        "memberOf": { "C4": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "l580f91a-7a49-42ee-ce0a-f88cc7b5928a",
+                        "point": {
+                            "x": 220.60090175802665,
+                            "y": 160.192994495125
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "ea9e4d13-64e4-4946-4d4b-3a849be062fb",
+                        "point": {
+                            "x": 220.57256053807498,
+                            "y": 152.11574680890104
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell",
+                            "T5": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "hd73b013-5c54-78fa-400a-49d3dc98a0fb",
+                        "point": {
+                            "x": 220.5307908960025,
+                            "y": 140.21139881824206
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "ed1dd771-a84d-20f3-0ede-da51447c84b1",
+                        "point": {
+                            "x": 220.46066277379566,
+                            "y": 120.2248839892969
+                        },
+                        "memberOf": { "C3": "cell", "C4": "cell", "C5": "cell" }
+                    },
+                    {
+                        "uuid": "b93b1d01-4024-9693-9d6e-a426463e1376",
+                        "point": {
+                            "x": 220.66901290116442,
+                            "y": 60.63674756182892
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "b8930436-d108-d791-3ab4-48b03af330c6",
+                        "point": {
+                            "x": 220.7033137149516,
+                            "y": 50.826714818700395
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell",
+                            "T2": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "e734f2f9-8db5-bd3f-e8fe-0368517eeb3f",
+                        "point": {
+                            "x": 220.74008264475893,
+                            "y": 40.31080089380522
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "j4a4041a-6b74-e570-0157-3e46922ac79c",
+                        "point": {
+                            "x": 220.81115667327705,
+                            "y": 19.983628737618748
+                        },
+                        "memberOf": { "C3": "cell", "C5": "cell" }
+                    }
+                ],
+                "slant": null
+            }
+        ],
+        "cellBoundaryGeometry": [
+            {
+                "id": "B1",
+                "points": [
+                    {
+                        "uuid": "z6908020-f30f-5bc8-5a84-f0141e86a37c",
+                        "point": {
+                            "x": 160.66716281074025,
+                            "y": 59.94679344125488
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "ee42c1df-d279-29f1-9306-bb6a4747924b",
+                        "point": {
+                            "x": 160.63404892080305,
+                            "y": 50.476220919219
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell",
+                            "T1": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "w2f042d2-2d91-73ca-96a8-392f6a0dc53e",
+                        "point": {
+                            "x": 160.60218622857053,
+                            "y": 41.36349094071761
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "B2",
+                "points": [
+                    {
+                        "uuid": "b93b1d01-4024-9693-9d6e-a426463e1376",
+                        "point": {
+                            "x": 220.66901290116442,
+                            "y": 60.63674756182892
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "b8930436-d108-d791-3ab4-48b03af330c6",
+                        "point": {
+                            "x": 220.7033137149516,
+                            "y": 50.826714818700395
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell",
+                            "T2": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "e734f2f9-8db5-bd3f-e8fe-0368517eeb3f",
+                        "point": {
+                            "x": 220.74008264475893,
+                            "y": 40.31080089380522
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "B3",
+                "points": [
+                    {
+                        "uuid": "k18b0070-17fc-df15-0824-60bdc37af2ca",
+                        "point": {
+                            "x": 160.73088391028165,
+                            "y": 161.57775226953612
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "s8840ed3-040e-8df1-53d7-9ee664118380",
+                        "point": {
+                            "x": 160.76273803266687,
+                            "y": 152.4674732673603
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell",
+                            "T4": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "o2bf2a3e-6954-98bb-f195-8bb8602cfdcf",
+                        "point": {
+                            "x": 160.80439606035443,
+                            "y": 140.55327734872253
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "B4",
+                "points": [
+                    {
+                        "uuid": "l580f91a-7a49-42ee-ce0a-f88cc7b5928a",
+                        "point": {
+                            "x": 220.60090175802665,
+                            "y": 160.192994495125
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell"
+                        }
+                    },
+                    {
+                        "uuid": "ea9e4d13-64e4-4946-4d4b-3a849be062fb",
+                        "point": {
+                            "x": 220.57256053807498,
+                            "y": 152.11574680890104
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell",
+                            "T5": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "hd73b013-5c54-78fa-400a-49d3dc98a0fb",
+                        "point": {
+                            "x": 220.5307908960025,
+                            "y": 140.21139881824206
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell"
+                        }
+                    }
+                ]
+            }
+        ],
+        "stateGeometry": [
+            {
+                "id": "S1",
+                "point": {
+                    "uuid": "v3b93a59-5297-69f6-5a96-21fc65ccdf1c",
+                    "point": { "x": 90.46844958220157, "y": 69.84126194986185 },
+                    "memberOf": { "S1": "state", "T1": "transition" }
+                }
+            },
+            {
+                "id": "S2",
+                "point": {
+                    "uuid": "df6d8f72-15f8-b35d-58a5-51e78216634d",
+                    "point": {
+                        "x": 90.52105393714078,
+                        "y": 170.12855548427933
+                    },
+                    "memberOf": { "S2": "state", "T4": "transition" }
+                }
+            },
+            {
+                "id": "S3",
+                "point": {
+                    "uuid": "zc8230b3-a77f-5c44-a3dc-ba73a8531c34",
+                    "point": {
+                        "x": 280.44781457793306,
+                        "y": 70.04105951919861
+                    },
+                    "memberOf": { "S3": "state", "T2": "transition" }
+                }
+            },
+            {
+                "id": "S4",
+                "point": {
+                    "uuid": "f0fe1934-3669-bad1-2a46-172ef4692571",
+                    "point": { "x": 280.728072389944, "y": 170.1943984302501 },
+                    "memberOf": { "S4": "state", "T5": "transition" }
+                }
+            },
+            {
+                "id": "S5",
+                "point": {
+                    "uuid": "pbd5c844-a791-7eed-7996-d952dd0bf2c4",
+                    "point": { "x": 188.5661526125453, "y": 50.1651345737961 },
+                    "memberOf": {
+                        "S5": "state",
+                        "T1": "transition",
+                        "T2": "transition",
+                        "T3": "transition"
+                    }
+                }
+            },
+            {
+                "id": "S6",
+                "point": {
+                    "uuid": "q1e9746f-d645-a338-852e-b463dfb14d64",
+                    "point": {
+                        "x": 190.31818741839592,
+                        "y": 150.71785324417803
+                    },
+                    "memberOf": {
+                        "S6": "state",
+                        "T3": "transition",
+                        "T4": "transition",
+                        "T5": "transition",
+                        "T6": "transition"
+                    }
+                }
+            },
+            {
+                "id": "S7",
+                "point": {
+                    "uuid": "d1e510ab-2025-3a70-90f2-962d72a52c84",
+                    "point": {
+                        "x": 190.31818741839592,
+                        "y": 215.20873074875416
+                    },
+                    "memberOf": { "S7": "state", "T6": "transition" }
+                }
+            }
+        ],
+        "transitionGeometry": [
+            {
+                "id": "T1",
+                "connects": ["S1", "S5"],
+                "points": [
+                    {
+                        "uuid": "v3b93a59-5297-69f6-5a96-21fc65ccdf1c",
+                        "point": {
+                            "x": 90.46844958220157,
+                            "y": 69.84126194986185
+                        },
+                        "memberOf": { "S1": "state", "T1": "transition" }
+                    },
+                    {
+                        "uuid": "v627cfce-9a63-cac6-69c0-986b91b8d537",
+                        "point": {
+                            "x": 87.27298097086664,
+                            "y": 52.229067489906825
+                        },
+                        "memberOf": { "T1": "transition" }
+                    },
+                    {
+                        "uuid": "ee42c1df-d279-29f1-9306-bb6a4747924b",
+                        "point": {
+                            "x": 160.63404892080305,
+                            "y": 50.476220919219
+                        },
+                        "memberOf": {
+                            "B1": "cellBoundary",
+                            "C1": "cell",
+                            "C5": "cell",
+                            "T1": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "pbd5c844-a791-7eed-7996-d952dd0bf2c4",
+                        "point": {
+                            "x": 188.5661526125453,
+                            "y": 50.1651345737961
+                        },
+                        "memberOf": {
+                            "S5": "state",
+                            "T1": "transition",
+                            "T2": "transition",
+                            "T3": "transition"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "T2",
+                "connects": ["S3", "S5"],
+                "points": [
+                    {
+                        "uuid": "zc8230b3-a77f-5c44-a3dc-ba73a8531c34",
+                        "point": {
+                            "x": 280.44781457793306,
+                            "y": 70.04105951919861
+                        },
+                        "memberOf": { "S3": "state", "T2": "transition" }
+                    },
+                    {
+                        "uuid": "h52de882-4022-d594-e1c7-9cc18dd6da60",
+                        "point": {
+                            "x": 282.4980829820021,
+                            "y": 50.126104093018476
+                        },
+                        "memberOf": { "T2": "transition" }
+                    },
+                    {
+                        "uuid": "b8930436-d108-d791-3ab4-48b03af330c6",
+                        "point": {
+                            "x": 220.7033137149516,
+                            "y": 50.826714818700395
+                        },
+                        "memberOf": {
+                            "B2": "cellBoundary",
+                            "C3": "cell",
+                            "C5": "cell",
+                            "T2": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "pbd5c844-a791-7eed-7996-d952dd0bf2c4",
+                        "point": {
+                            "x": 188.5661526125453,
+                            "y": 50.1651345737961
+                        },
+                        "memberOf": {
+                            "S5": "state",
+                            "T1": "transition",
+                            "T2": "transition",
+                            "T3": "transition"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "T3",
+                "connects": ["S5", "S6"],
+                "points": [
+                    {
+                        "uuid": "pbd5c844-a791-7eed-7996-d952dd0bf2c4",
+                        "point": {
+                            "x": 188.5661526125453,
+                            "y": 50.1651345737961
+                        },
+                        "memberOf": {
+                            "S5": "state",
+                            "T1": "transition",
+                            "T2": "transition",
+                            "T3": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "q1e9746f-d645-a338-852e-b463dfb14d64",
+                        "point": {
+                            "x": 190.31818741839592,
+                            "y": 150.71785324417803
+                        },
+                        "memberOf": {
+                            "S6": "state",
+                            "T3": "transition",
+                            "T4": "transition",
+                            "T5": "transition",
+                            "T6": "transition"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "T4",
+                "connects": ["S2", "S6"],
+                "points": [
+                    {
+                        "uuid": "df6d8f72-15f8-b35d-58a5-51e78216634d",
+                        "point": {
+                            "x": 90.52105393714078,
+                            "y": 170.12855548427933
+                        },
+                        "memberOf": { "S2": "state", "T4": "transition" }
+                    },
+                    {
+                        "uuid": "q00fed19-e295-82d5-106d-d0f2e727376c",
+                        "point": {
+                            "x": 87.27298097086664,
+                            "y": 152.47032274158497
+                        },
+                        "memberOf": { "T4": "transition" }
+                    },
+                    {
+                        "uuid": "s8840ed3-040e-8df1-53d7-9ee664118380",
+                        "point": {
+                            "x": 160.76273803266687,
+                            "y": 152.4674732673603
+                        },
+                        "memberOf": {
+                            "B3": "cellBoundary",
+                            "C2": "cell",
+                            "C5": "cell",
+                            "T4": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "q1e9746f-d645-a338-852e-b463dfb14d64",
+                        "point": {
+                            "x": 190.31818741839592,
+                            "y": 150.71785324417803
+                        },
+                        "memberOf": {
+                            "S6": "state",
+                            "T3": "transition",
+                            "T4": "transition",
+                            "T5": "transition",
+                            "T6": "transition"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "T5",
+                "connects": ["S4", "S6"],
+                "points": [
+                    {
+                        "uuid": "f0fe1934-3669-bad1-2a46-172ef4692571",
+                        "point": {
+                            "x": 280.728072389944,
+                            "y": 170.1943984302501
+                        },
+                        "memberOf": { "S4": "state", "T5": "transition" }
+                    },
+                    {
+                        "uuid": "y8128364-9187-5216-1149-1956a59ff895",
+                        "point": {
+                            "x": 280.3597467090046,
+                            "y": 149.8033034092792
+                        },
+                        "memberOf": { "T5": "transition" }
+                    },
+                    {
+                        "uuid": "ea9e4d13-64e4-4946-4d4b-3a849be062fb",
+                        "point": {
+                            "x": 220.57256053807498,
+                            "y": 152.11574680890104
+                        },
+                        "memberOf": {
+                            "B4": "cellBoundary",
+                            "C4": "cell",
+                            "C5": "cell",
+                            "T5": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "q1e9746f-d645-a338-852e-b463dfb14d64",
+                        "point": {
+                            "x": 190.31818741839592,
+                            "y": 150.71785324417803
+                        },
+                        "memberOf": {
+                            "S6": "state",
+                            "T3": "transition",
+                            "T4": "transition",
+                            "T5": "transition",
+                            "T6": "transition"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "T6",
+                "connects": ["S6", "S7"],
+                "points": [
+                    {
+                        "uuid": "q1e9746f-d645-a338-852e-b463dfb14d64",
+                        "point": {
+                            "x": 190.31818741839592,
+                            "y": 150.71785324417803
+                        },
+                        "memberOf": {
+                            "S6": "state",
+                            "T3": "transition",
+                            "T4": "transition",
+                            "T5": "transition",
+                            "T6": "transition"
+                        }
+                    },
+                    {
+                        "uuid": "d1e510ab-2025-3a70-90f2-962d72a52c84",
+                        "point": {
+                            "x": 190.31818741839592,
+                            "y": 215.20873074875416
+                        },
+                        "memberOf": { "S7": "state", "T6": "transition" }
+                    }
+                ]
+            }
+        ],
+        "holeGeometry": [],
+        "hatchGeometry": [],
+        "beaconGeometry": [
+            {
+                "points": [{ "point": { "x": 1, "y": 1 } }],
+                "rssi_1": -70,
+                "n": 2,
+                "n_wall": 5,
+                "noise_var": 4
+            }
+        ]
+    },
+    "propertyContainer": {
+        "floorProperties": [
+            {
+                "id": "F1",
+                "name": "F1",
+                "level": 1,
+                "lowerCorner": [0, 0],
+                "upperCorner": [400, 300],
+                "groundHeight": "0",
+                "celingHeight": "20",
+                "doorHeight": "15",
+                "description": {},
+                "cellKey": ["C1", "C2", "C3", "C4", "C5"],
+                "cellBoundaryKey": ["B1", "B2", "B3", "B4"],
+                "stateKey": ["S1", "S2", "S3", "S4", "S5", "S6", "S7"],
+                "transitionKey": ["T1", "T2", "T3", "T4", "T5", "T6"],
+                "layer": "base",
+                "scale": 1,
+                "wall_detection": false,
+                "noise": false
+            }
+        ],
+        "cellProperties": [
+            {
+                "id": "C1",
+                "name": "Room1",
+                "description": {},
+                "duality": "S1",
+                "storey": "F1",
+                "featrueType": "property__cellSpace",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "partialboundedBy": ["B1"],
+                "bottom": 0,
+                "height": 20
+            },
+            {
+                "id": "C2",
+                "name": "Room2",
+                "description": {},
+                "duality": "S2",
+                "storey": "F1",
+                "featrueType": "property__cellSpace",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "partialboundedBy": ["B3"],
+                "bottom": 0,
+                "height": 20
+            },
+            {
+                "id": "C3",
+                "name": "Room3",
+                "description": {},
+                "duality": "S3",
+                "storey": "F1",
+                "featrueType": "property__cellSpace",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "partialboundedBy": ["B2"],
+                "bottom": 0,
+                "height": 20
+            },
+            {
+                "id": "C4",
+                "name": "Room4",
+                "description": {},
+                "duality": "S4",
+                "storey": "F1",
+                "featrueType": "property__cellSpace",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "partialboundedBy": ["B4"],
+                "bottom": 0,
+                "height": 20
+            },
+            {
+                "id": "C5",
+                "name": "Hall",
+                "description": {},
+                "duality": "S5",
+                "storey": "F1",
+                "featrueType": "property__cellSpace",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "partialboundedBy": ["B1", "B2", "B3", "B4"],
+                "bottom": 0,
+                "height": 20
+            }
+        ],
+        "cellBoundaryProperties": [
+            {
+                "id": "B1",
+                "name": "B1",
+                "description": {},
+                "duality": "T1",
+                "storey": "",
+                "featrueType": "property__cellSpaceBoundary",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "bottom": 0,
+                "height": "15"
+            },
+            {
+                "id": "B2",
+                "name": "B2",
+                "description": {},
+                "duality": "T2",
+                "storey": "",
+                "featrueType": "property__cellSpaceBoundary",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "bottom": 0,
+                "height": "15"
+            },
+            {
+                "id": "B3",
+                "name": "B3",
+                "description": {},
+                "duality": "T4",
+                "storey": "",
+                "featrueType": "property__cellSpaceBoundary",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "bottom": 0,
+                "height": "15"
+            },
+            {
+                "id": "B4",
+                "name": "B4",
+                "description": {},
+                "duality": "T5",
+                "storey": "",
+                "featrueType": "property__cellSpaceBoundary",
+                "extend": {
+                    "moduleType": "",
+                    "featureType": "",
+                    "attributes": {}
+                },
+                "externalReference": [],
+                "bottom": 0,
+                "height": "15"
+            }
+        ],
+        "stateProperties": [
+            {
+                "id": "S1",
+                "name": "S1",
+                "description": {},
+                "duality": "C1",
+                "connects": ["T1"],
+                "height": 0
+            },
+            {
+                "id": "S2",
+                "name": "S2",
+                "description": {},
+                "duality": "C2",
+                "connects": ["T4"],
+                "height": 0
+            },
+            {
+                "id": "S3",
+                "name": "S3",
+                "description": {},
+                "duality": "C3",
+                "connects": ["T2"],
+                "height": 0
+            },
+            {
+                "id": "S4",
+                "name": "S4",
+                "description": {},
+                "duality": "C4",
+                "connects": ["T5"],
+                "height": 0
+            },
+            {
+                "id": "S5",
+                "name": "S5",
+                "description": {},
+                "duality": "C5",
+                "connects": ["T1", "T2", "T3"],
+                "height": 0
+            },
+            {
+                "id": "S6",
+                "name": "S6",
+                "description": {},
+                "duality": "",
+                "connects": ["T3", "T4", "T5", "T6"],
+                "height": 0
+            },
+            {
+                "id": "S7",
+                "name": "S7",
+                "description": {},
+                "duality": "",
+                "connects": ["T6"],
+                "height": 0
+            }
+        ],
+        "transitionProperties": [
+            {
+                "id": "T1",
+                "name": "T1",
+                "description": {},
+                "weight": "",
+                "connects": ["S1", "S5"],
+                "duality": "B1",
+                "isStair": { "tf": false, "connection": [] }
+            },
+            {
+                "id": "T2",
+                "name": "T2",
+                "description": {},
+                "weight": "",
+                "connects": ["S3", "S5"],
+                "duality": "B2",
+                "isStair": { "tf": false, "connection": [] }
+            },
+            {
+                "id": "T3",
+                "name": "T3",
+                "description": {},
+                "weight": "",
+                "connects": ["S5", "S6"],
+                "duality": null,
+                "isStair": { "tf": false, "connection": [] }
+            },
+            {
+                "id": "T4",
+                "name": "T4",
+                "description": {},
+                "weight": "",
+                "connects": ["S2", "S6"],
+                "duality": "B3",
+                "isStair": { "tf": false, "connection": [] }
+            },
+            {
+                "id": "T5",
+                "name": "T5",
+                "description": {},
+                "weight": "",
+                "connects": ["S4", "S6"],
+                "duality": "B4",
+                "isStair": { "tf": false, "connection": [] }
+            },
+            {
+                "id": "T6",
+                "name": "T6",
+                "description": {},
+                "weight": "",
+                "connects": ["S6", "S7"],
+                "duality": null,
+                "isStair": { "tf": false, "connection": [] }
+            }
+        ],
+        "projectProperty": {
+            "id": "ob829ac6-41ed-e1d0-54df-08720dae86db",
+            "name": "ob829ac6-41ed-e1d0-54df-08720dae86db",
+            "date": "2021-03-14",
+            "author": "",
+            "isRealCoor": false,
+            "realCoorFloor": "",
+            "description": {},
+            "savePath": null
+        },
+        "interlayerConnections": []
+    }
+}

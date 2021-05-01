@@ -48,6 +48,10 @@ class PointTest(unittest.TestCase):
         self.assertEqual(1, self.point.distance(point2))
         self.assertEqual(math.sqrt(2), self.point.distance(point3))
 
+    def testDict(self):
+        point_dict = {"point": {"x": self.point.x, "y": self.point.y}}
+        self.assertDictEqual(self.point.getDict(), point_dict)
+
 
 if __name__ == "__main__":
     unittest.main()

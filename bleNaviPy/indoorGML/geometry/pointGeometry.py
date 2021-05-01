@@ -74,3 +74,11 @@ class Point:
         self.x -= point.x
         self.y -= point.y
         return self
+
+    def getDict(self) -> dict:
+        """Get dictionary form of point geometry ready for a saving
+
+        Returns:
+            dict: Save ready dict form of point geometry
+        """
+        return {"point": {"x": self.x, "y": self.y}}
