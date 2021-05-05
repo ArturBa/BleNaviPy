@@ -40,10 +40,9 @@ class ParserJSON:
         """
         with ParserJSON.opened(filename) as (f, err):
             if err:
-                logging.error(f"File {filename} open error. Please check the path")
-                logging.debug(f"File open error {err}")
                 return FloorGeometry([], [])
             json_data = json.load(f)
+        try:
             project_data = ParserJSON.getProjectData(json_data)
 
             cells_geometry = ParserJSON.getCellGeometries(project_data)
@@ -55,6 +54,13 @@ class ParserJSON:
                 ParserJSON.getTransitionGeometries(project_data),
             )
             return floor_geometry
+        except KeyError as err:
+            logging.error(f"File {filename} read error. Please check the file content")
+            logging.debug(f"Key error: {err}")
+        else:
+            logging.error(f"File {filename} read error.")
+            logging.error(f"Error: {err}")
+        return FloorGeometry([], [])
 
     @staticmethod
     def getGeometryFromBleNaviFile(filename: string) -> FloorGeometry:
@@ -73,11 +79,9 @@ class ParserJSON:
         """
         with ParserJSON.opened(filename) as (f, err):
             if err:
-                logging.error(f"File {filename} open error. Please check the path")
-                logging.debug(f"File open error {err}")
                 return FloorGeometry([], [])
             project_data = json.load(f)
-
+        try:
             cells_geometry = ParserJSON.getCellGeometries(project_data)
             holes_geometry = ParserJSON.getHolesGeometries(project_data)
             ParserJSON.addHolesToCells(cells_geometry, holes_geometry)
@@ -89,6 +93,13 @@ class ParserJSON:
             )
             ParserJSON.setFloorProperties(project_data, floor_geometry)
             return floor_geometry
+        except KeyError as err:
+            logging.error(f"File {filename} read error. Please check the file content")
+            logging.debug(f"Key error: {err}")
+        else:
+            logging.error(f"File {filename} read error.")
+            logging.error(f"Error: {err}")
+        return FloorGeometry([], [])
 
     @staticmethod
     def saveFloorGeometry(
@@ -106,15 +117,13 @@ class ParserJSON:
         """
         with ParserJSON.opened(filename, "w") as (f, err):
             if err:
-                logging.error(f"File {filename} open error. Please check the path")
-                logging.debug(f"File open error {err}")
                 return
             json.dump(floor_geometry.getDict(), f, indent=indent)
             logging.info(f"{floor_geometry} saved into {filename}")
 
     @staticmethod
     @contextmanager
-    def opened(filename: string, mode: string = "r") -> List[TextIOWrapper, IOError]:
+    def opened(filename: string, mode: string = "r") -> Tuple(TextIOWrapper, IOError):
         """Open file context
 
         Args:
@@ -130,6 +139,8 @@ class ParserJSON:
         try:
             f = open(filename, mode)
         except IOError as err:
+            logging.error(f"File {filename} open error. Please check the path")
+            logging.debug(f"File open error {err}")
             yield None, err
         else:
             try:
@@ -301,7 +312,6 @@ class ParserJSON:
         floor_properties = project_data[ParserJsonKeys.property_container.value][
             ParserJsonKeys.floor_properties.value
         ][0]
-        print(floor_properties)
         floor.setScale(floor_properties["scale"])
         floor.setWallDetection(floor_properties["wall_detection"])
         floor.setNoise(floor_properties["noise"])
