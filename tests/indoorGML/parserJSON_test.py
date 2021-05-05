@@ -88,6 +88,17 @@ class LocationTest(unittest.TestCase):
         )
         self.assertEqual(5, len(floor.cells))
 
+    def testGetGeometryFromGMLFileWrongFile(self):
+        with self._caplog.at_level(logging.INFO):
+            floor: FloorGeometry = ParserJSON.getGeometryFromIndoorGMLFile(
+                self.ble_navi_filename
+            )
+            assert (
+                f"File {self.ble_navi_filename} read error. Please check the file content"
+                in self._caplog.text
+            )
+            self.assertEqual(0, len(floor.cells))
+
     def testGetGeometryFromFileFailure(self):
         fake_path: str = "tests/indoorGML/nonExisting.json"
         with self._caplog.at_level(logging.INFO):
@@ -104,6 +115,17 @@ class LocationTest(unittest.TestCase):
         )
         self.assertEqual(1, len(floor.beacons))
         self.assertEqual(1, floor.scale)
+
+    def testGetGeometryFromBleNaviFileWrongFile(self):
+        with self._caplog.at_level(logging.INFO):
+            floor: FloorGeometry = ParserJSON.getGeometryFromBleNaviFile(
+                self.indoor_gml_filename
+            )
+            assert (
+                f"File {self.indoor_gml_filename} read error. Please check the file content"
+                in self._caplog.text
+            )
+            self.assertEqual(0, len(floor.cells))
 
     def testGetGeometryFromBleNaviFileFailure(self):
         fake_path: str = "tests/indoorGML/nonExisting.json"
